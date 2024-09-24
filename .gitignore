@@ -4,7 +4,7 @@
 # rather than unwanted files being explicitly excluded by default.
 /*
 
-# Repository requirements
+# Repository
 !.gitignore
 !README.md
 
@@ -13,4 +13,3 @@
 
 # Misc. files
 *.DS_Store
-
