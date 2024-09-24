@@ -2,13 +2,14 @@
 # Dotfiles differ per system due to different applications, so
 # configurations should be explicitly included in the repository,
 # rather than unwanted files being explicitly excluded by default.
-*
+/*
 
 # Repository requirements
 !.gitignore
 !README.md
 
-# Supported configurations
+# Neovim
+!/nvim
 
 # Misc. files
 *.DS_Store
