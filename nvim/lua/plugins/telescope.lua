@@ -9,7 +9,7 @@ return {
   event = 'VimEnter',
   branch = '0.1.x',
   dependencies = {
-    'nvim-lua/plenary.nvim',
+    { 'nvim-lua/plenary.nvim' },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
@@ -18,8 +18,9 @@ return {
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
-    -- Enable icons if a Nerd Font is enabled in Neovim.
+    -- Enable icons if a Nerd Font is enabled in Neovim
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    -- Additional plugins to find more things in Telescope
   },
   config = function()
     require('telescope').setup {

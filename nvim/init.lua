@@ -1,8 +1,8 @@
 -- [[ Configuration ]]
-require 'custom.globals'
-require 'custom.options'
-require 'custom.keymaps'
-require 'custom.autocommands'
+require 'globals'
+require 'options'
+require 'keymaps'
+require 'autocommands'
 
 -- [[ `lazy.nvim` ]]
 --  See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim
@@ -19,24 +19,20 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Plugins ]]
 --  See `:Lazy`
 require('lazy').setup({
-  { import = 'custom.colorschemes' },
-  { import = 'custom.plugins.comments' },
-  { import = 'custom.plugins.completions' },
-  { import = 'custom.plugins.conform' },
-  { import = 'custom.plugins.gitsigns' },
-  { import = 'custom.plugins.lsp' },
-  { import = 'custom.plugins.mini' },
-  { import = 'custom.plugins.sleuth' },
-  { import = 'custom.plugins.telescope' },
-  { import = 'custom.plugins.treesitter' },
-  { import = 'custom.plugins.which-key' },
-
-  -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  { import = 'colorschemes' },
+  { import = 'plugins.autopairs' },
+  { import = 'plugins.comments' },
+  { import = 'plugins.completions' },
+  { import = 'plugins.conform' },
+  { import = 'plugins.gitsigns' },
+  { import = 'plugins.indents' },
+  { import = 'plugins.lsp' },
+  { import = 'plugins.mini' },
+  { import = 'plugins.neotree' },
+  { import = 'plugins.sleuth' },
+  { import = 'plugins.telescope' },
+  { import = 'plugins.treesitter' },
+  { import = 'plugins.which-key' },
 }, {
   ui = {
     -- Use icons for UI if a Nerd Font is enabled in Vim, falling back to an empty field otherwise.
