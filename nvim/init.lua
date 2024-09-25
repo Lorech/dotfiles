@@ -19,20 +19,22 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Plugins ]]
 --  See `:Lazy`
 require('lazy').setup({
-  { import = 'colorschemes' },
-  { import = 'plugins.autopairs' },
-  { import = 'plugins.comments' },
-  { import = 'plugins.completions' },
-  { import = 'plugins.conform' },
-  { import = 'plugins.gitsigns' },
-  { import = 'plugins.indents' },
-  { import = 'plugins.lsp' },
-  { import = 'plugins.mini' },
-  { import = 'plugins.neotree' },
-  { import = 'plugins.sleuth' },
-  { import = 'plugins.telescope' },
-  { import = 'plugins.treesitter' },
-  { import = 'plugins.which-key' },
+  -- Configurations that depend on plugins
+  require 'colorschemes',
+  -- Standalone plugins
+  require 'plugins.autopairs',
+  require 'plugins.comments',
+  require 'plugins.completions',
+  require 'plugins.conform',
+  require 'plugins.gitsigns',
+  require 'plugins.indents',
+  require 'plugins.lsp',
+  require 'plugins.mini',
+  require 'plugins.neotree',
+  require 'plugins.sleuth',
+  require 'plugins.telescope',
+  require 'plugins.treesitter',
+  require 'plugins.which-key',
 }, {
   ui = {
     -- Use icons for UI if a Nerd Font is enabled in Vim, falling back to an empty field otherwise.
