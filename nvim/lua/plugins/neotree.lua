@@ -12,6 +12,16 @@ return {
     { '<leader>wr', ':Neotree filesystem reveal<CR>', desc = '[W]orkspace [R]eveal', silent = true },
   },
   opts = {
+    default_component_configs = {
+      git_status = {
+        symbols = {
+          added = '+',
+          modified = '~',
+          deleted = '-',
+          renamed = '~',
+        },
+      },
+    },
     filesystem = {
       filtered_items = {
         visible = true,
