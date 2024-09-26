@@ -27,7 +27,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+-- Allocate two columns to support staged and unstaged Git changes from gitsigns
+vim.opt.signcolumn = 'yes:2'
 
 -- Decrease update time
 vim.opt.updatetime = 250

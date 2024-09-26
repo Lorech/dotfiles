@@ -17,6 +17,12 @@ return {
       topdelete = { text = '‾' },
       changedelete = { text = '~' },
     },
+    current_line_blame_opts = {
+      -- Configured for quick scanning of files, but not enabled by default
+      -- Toggle to enable blame with '<leader>tb'
+      virt_text_pos = 'right_align',
+      delay = 0,
+    },
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
 
