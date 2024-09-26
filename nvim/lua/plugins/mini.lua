@@ -6,17 +6,7 @@ return {
     require('mini.ai').setup { n_lines = 500 }
 
     -- Make surrounding and removing/editing text surroundings easier
-    require('mini.surround').setup {
-      mappings = {
-        add = 'tsa', -- Add surrounding in Normal and Visual modes
-        delete = 'tsd', -- Delete surrounding
-        find = 'tsf', -- Find surrounding (to the right)
-        find_left = 'tsF', -- Find surrounding (to the left)
-        highlight = 'tsh', -- Highlight surrounding
-        replace = 'tsr', -- Replace surrounding
-        update_n_lines = 'tsn', -- Update `n_lines`
-      },
-    }
+    require('mini.surround').setup()
 
     -- Simple and easy statusline.
     local statusline = require 'mini.statusline'
