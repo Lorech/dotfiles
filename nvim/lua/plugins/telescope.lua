@@ -35,36 +35,40 @@ return {
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
 
+    -- Utility function for creating keymaps
+    local function map(mode, l, r, desc)
+      vim.keymap.set(mode, l, r, { desc = 'Telescope: ' .. desc })
+    end
+
     -- Configure Telescope-specific keymaps
     local builtin = require 'telescope.builtin'
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
-    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
-    vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[F]ind [S]elect Telescope' })
-    vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
-    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
-    vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
-    vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
-    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    map('n', '<leader>fh', builtin.help_tags, 'Find Help')
+    map('n', '<leader>fk', builtin.keymaps, 'Find Keymaps')
+    map('n', '<leader>ff', builtin.find_files, 'Find Files')
+    map('n', '<leader>fw', builtin.grep_string, 'Find current Word')
+    map('n', '<leader>fg', builtin.live_grep, 'Find by Grep')
+    map('n', '<leader>fd', builtin.diagnostics, 'Find Diagnostics')
+    map('n', '<leader>fr', builtin.resume, 'Find Resume')
+    map('n', '<leader>f.', builtin.oldfiles, 'Find recent files ("." for repeat)')
+    map('n', '<leader><leader>', builtin.buffers, 'find existing buffers')
 
-    vim.keymap.set('n', '<leader>/', function()
+    map('n', '<leader>/', function()
       -- There is no need for such a large UI when searching through the current file, as we already are familiar with it.
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 10,
         previewer = false,
       })
-    end, { desc = '[/] Fuzzily search in current buffer' })
+    end, 'Fuzzy search in current buffer')
 
-    vim.keymap.set('n', '<leader>f/', function()
+    map('n', '<leader>f/', function()
       builtin.live_grep {
         grep_open_files = true,
         prompt_title = 'Live Grep in Open Files',
       }
-    end, { desc = '[F]ind [/] in Open Files' })
+    end, 'Find by grep in open files')
 
-    vim.keymap.set('n', '<leader>fn', function()
+    map('n', '<leader>fn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
-    end, { desc = '[F]ind [N]eovim files' })
+    end, 'Find Neovim files')
   end,
 }

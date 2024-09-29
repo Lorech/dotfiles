@@ -8,6 +8,15 @@ return {
     -- Make surrounding and removing/editing text surroundings easier
     require('mini.surround').setup()
 
+    require('mini.icons').setup {
+      init = function()
+        package.preload['nvim-web-devicons'] = function()
+          require('mini.icons').mock_nvim_web_devicons()
+          return package.loaded['nvim-web-devicons']
+        end
+      end,
+    }
+
     -- Simple and easy statusline.
     local statusline = require 'mini.statusline'
     -- Enable Nerd Font icons if Vim is configured to have one

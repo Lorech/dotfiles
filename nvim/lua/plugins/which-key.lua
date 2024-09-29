@@ -38,16 +38,24 @@ return {
         F12 = '<F12>',
       },
     },
-
     -- Document existing key chains
     spec = {
-      { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-      { '<leader>d', group = '[D]ocument' },
-      { '<leader>r', group = '[R]ename' },
-      { '<leader>s', group = '[S]earch' },
-      { '<leader>w', group = '[W]orkspace' },
-      { '<leader>t', group = '[T]oggle' },
-      { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+      { '<leader>c', group = 'Code', mode = { 'n', 'x' } },
+      { '<leader>d', group = 'Document', icon = { icon = '', color = 'green' } },
+      { '<leader>r', group = 'Rename', icon = { icon = '', color = 'white' } },
+      { '<leader>f', group = 'Find' },
+      { '<leader>w', group = 'Workspace', icon = { icon = '󰙅', color = 'yellow' } },
+      { '<leader>t', group = 'Toggle' },
+      { '<leader>h', group = 'Hunk', mode = { 'n', 'v' }, icon = { icon = '󰊢', color = 'orange' } },
+    },
+  },
+  keys = {
+    {
+      '<leader>?',
+      function()
+        require('which-key').show { global = false }
+      end,
+      desc = 'Which-key: buffer keymaps',
     },
   },
 }

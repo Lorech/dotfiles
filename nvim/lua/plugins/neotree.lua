@@ -9,7 +9,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '<leader>wr', ':Neotree filesystem reveal<CR>', desc = '[W]orkspace [R]eveal', silent = true },
+    { '<leader>wr', ':Neotree filesystem reveal<CR>', desc = 'Workspace Reveal', silent = true },
   },
   opts = {
     default_component_configs = {
@@ -30,7 +30,7 @@ return {
       window = {
         width = 60,
         mappings = {
-          ['<leader>wr'] = { 'close_window', desc = '[W]orkspace un[R]eveal' },
+          ['<leader>wr'] = { 'close_window', desc = 'Workspace unReveal' },
         },
       },
     },
@@ -48,7 +48,7 @@ return {
             local relPath = string.gsub(absPath, cwd, '')
             vim.fn.setreg('+', relPath, 'c')
           end,
-          desc = '[Y]ank relative path to clipboard',
+          desc = 'Yank relative path',
         },
         ['YY'] = {
           function(state)
@@ -56,7 +56,7 @@ return {
             local absPath = node:get_id()
             vim.fn.setreg('+', absPath, 'c')
           end,
-          desc = '[Y]ank absolute path to clipboard',
+          desc = 'Yank absolute path',
         },
       },
     },
