@@ -4,6 +4,9 @@ return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
   opts = {
     -- Languages that treesitter should be configured to recognize for highlighting
     ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },

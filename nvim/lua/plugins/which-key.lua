@@ -1,5 +1,74 @@
 -- Simple UI display for showing keymaps for pending motions.
 --  See `:help which-key`
+
+-- Register all text objects within which-key
+function WhichKeyMiniAiKeymap()
+  -- The keys to add to the which-key UI.
+  --
+  -- Set `desc` to "NOOP" to hide a key from which-key, e.g.,
+  -- if you don't intend to use or have unmapped a built-in key.
+  --
+  -- Taken from LazyVim's configuration.
+  --  See https://github.com/LazyVim/LazyVim/blob/8ba7c64a7da9e46f2ac601919508803824208935/lua/lazyvim/plugins/coding.lua#L169-L199
+  local objects = {
+    { ' ', desc = 'whitespace' },
+    { '"', desc = '" string' },
+    { "'", desc = "' string" },
+    { '(', desc = '() block' },
+    { ')', desc = '() block with ws' },
+    { '<', desc = '<> block' },
+    { '>', desc = '<> block with ws' },
+    { '?', desc = 'user prompt' },
+    { '[', desc = '[] block' },
+    { ']', desc = '[] block with ws' },
+    { '_', desc = 'underscore' },
+    { '`', desc = '` string' },
+    { 'a', desc = 'argument' },
+    { 'b', desc = ')]} block' },
+    { 'B', desc = 'NOOP' },
+    { 'c', desc = 'class' },
+    { 'd', desc = 'digit(s)' },
+    { 'e', desc = 'CamelCase / snake_case' },
+    { 'f', desc = 'function' },
+    { 'i', desc = 'indent' },
+    { 'o', desc = 'block, conditional, loop' },
+    { 'q', desc = 'quote `"\'' },
+    { 't', desc = 'tag' },
+    { '{', desc = '{} block' },
+    { '}', desc = '{} with ws' },
+  }
+
+  local ret = { mode = { 'o', 'x' } }
+  ---@type table<string, string>
+  local mappings = vim.tbl_extend('force', {}, {
+    around = 'a',
+    inside = 'i',
+    around_next = 'an',
+    inside_next = 'in',
+    around_last = 'al',
+    inside_last = 'il',
+  }, {})
+  mappings.goto_left = nil
+  mappings.goto_right = nil
+
+  for name, prefix in pairs(mappings) do
+    name = name:gsub('^around_', ''):gsub('^inside_', '')
+    ret[#ret + 1] = { prefix, group = name }
+    for _, obj in ipairs(objects) do
+      local desc = obj.desc
+      if prefix:sub(1, 1) == 'i' then
+        desc = desc:gsub(' with ws', '')
+      end
+      local hidden = false
+      if desc == 'NOOP' then
+        hidden = true
+      end
+      ret[#ret + 1] = { prefix .. obj[1], desc = obj.desc, hidden = hidden }
+    end
+  end
+  require('which-key').add(ret, { notify = false })
+end
+
 return {
   'folke/which-key.nvim',
   event = 'VimEnter',
