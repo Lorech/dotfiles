@@ -2,8 +2,42 @@
 return {
   'echasnovski/mini.nvim',
   config = function()
-    -- Better Around/Inside textobjects for parens, brackets, quotes, etc.
-    require('mini.ai').setup { n_lines = 500 }
+    -- Better Around/Inside text object support
+    local gen_spec = require('mini.ai').gen_spec
+    require('mini.ai').setup {
+      n_lines = 500,
+      custom_textobjects = {
+        -- Code block
+        o = gen_spec.treesitter {
+          a = { '@block.outer', '@conditional.outer', '@loop.outer' },
+          i = { '@block.inner', '@conditional.inner', '@loop.innet' },
+        },
+        -- Function
+        f = gen_spec.treesitter {
+          a = { '@function.outer' },
+          i = { '@function.inner' },
+        },
+        -- Class
+        c = gen_spec.treesitter {
+          a = { '@class.outer' },
+          i = { '@class.inner' },
+        },
+        -- Tags
+        t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' },
+        -- Digits
+        d = { '%f[%d]%d+' },
+        -- Cased words
+        e = {
+          {
+            '%u[%l%d]+%f[^%l%d]',
+            '%f[%S][%l%d]+%f[^%l%d]',
+            '%f[%P][%l%d]+%f[^%l%d]',
+            '^[%l%d]+%f[^%l%d]',
+          },
+          '^().*()$',
+        },
+      },
+    }
 
     -- Make surrounding and removing/editing text surroundings easier
     require('mini.surround').setup()
