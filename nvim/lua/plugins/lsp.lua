@@ -40,14 +40,19 @@ return {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
           -- Utility function for auto-generating keymaps related to LSP
+          local telescope = require 'telescope.builtin'
           local map = function(keys, func, desc, mode)
             mode = mode or 'n'
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+          -- Display a hint about the word under your cursor
+          --  Similar to what other IDEs do when you hover over words with your mouse
+          map('K', vim.lsp.buf.hover, 'hover hint')
+
           -- Jump to the definition of the word under the cursor
           --  This is the location of the variable definition or function declaration
-          map('gd', require('telescope.builtin').lsp_definitions, 'Goto Definition')
+          map('gd', telescope.lsp_definitions, 'Goto Definition')
 
           -- Jump to the declaration of the word under the cursor
           --  This is where the word was declared, not defined, e.g., header file in C
@@ -55,21 +60,21 @@ return {
 
           -- Find references for the word under your cursor
           --  This is where the variable or function has been used
-          map('gr', require('telescope.builtin').lsp_references, 'Goto References')
+          map('gr', telescope.lsp_references, 'Goto References')
 
           -- Jump to the implementation of the word under your cursor
           --  Useful when the language can define types without implementing them (e.g., C)
-          map('gI', require('telescope.builtin').lsp_implementations, 'Goto Implementation')
+          map('gI', telescope.lsp_implementations, 'Goto Implementation')
 
           -- Jump to the type of the word under your cursor
           --  Useful when the type of the variable is unknown but the actual definition is irrelevant
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'type Definition')
+          map('<leader>D', telescope.lsp_type_definitions, 'type Definition')
 
           -- Fuzzy find all the symbols (e.g., variables, functions, types) in the current document
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
+          map('<leader>ds', telescope.lsp_document_symbols, 'Document Symbols')
 
           -- Fuzzy find all the symbols (e.g., variables, functions, types) in the current workspace
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+          map('<leader>ws', telescope.lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
           -- Rename the variable under the cursor
           map('<leader>rn', vim.lsp.buf.rename, 'ReName')
