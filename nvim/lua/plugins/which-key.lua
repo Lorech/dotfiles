@@ -11,7 +11,7 @@ function WhichKeyMiniAiKeymap()
   -- Taken from LazyVim's configuration.
   --  See https://github.com/LazyVim/LazyVim/blob/8ba7c64a7da9e46f2ac601919508803824208935/lua/lazyvim/plugins/coding.lua#L169-L199
   local objects = {
-    { ' ', desc = 'whitespace' }, -- doesn't work, should add it
+    { ' ', desc = 'whitespace' },
     { '"', desc = '" string' },
     { "'", desc = "' string" },
     { '(', desc = '() block' },
