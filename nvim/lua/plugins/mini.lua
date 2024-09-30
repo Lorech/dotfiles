@@ -94,6 +94,9 @@ return {
     -- Make surrounding and removing/editing text surroundings easier
     require('mini.surround').setup()
 
+    -- Add shortcuts for automatically creating code comments
+    require('mini.comment').setup()
+
     -- Enhance the available Nerd Font icon set within Neovim
     require('mini.icons').setup {
       init = function()
