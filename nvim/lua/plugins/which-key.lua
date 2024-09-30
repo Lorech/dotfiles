@@ -30,7 +30,7 @@ function WhichKeyMiniAiKeymap()
     { 'd', desc = 'digit(s)' },
     { 'e', desc = 'CamelCase / snake_case' },
     { 'f', desc = 'function' },
-    { 'i', desc = 'indent' }, -- doesn't work, should add it
+    { 'i', desc = 'indent' },
     { 'o', desc = 'block, conditional, loop' },
     { 'q', desc = 'quote `"\'' },
     { 't', desc = 'tag' },
