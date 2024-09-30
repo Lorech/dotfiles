@@ -9,7 +9,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '<leader>wr', ':Neotree filesystem reveal<CR>', desc = 'Workspace Reveal', silent = true },
+    { '<leader>wr', ':Neotree filesystem reveal toggle<CR>', desc = 'Neotree: Workspace Reveal', silent = true },
   },
   opts = {
     default_component_configs = {
@@ -29,9 +29,6 @@ return {
       },
       window = {
         width = 60,
-        mappings = {
-          ['<leader>wr'] = { 'close_window', desc = 'Workspace unReveal' },
-        },
       },
     },
     window = {
