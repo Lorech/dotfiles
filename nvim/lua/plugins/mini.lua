@@ -39,6 +39,17 @@ return {
       },
     }
 
+    -- Map the `mini.ai` keymaps to the `which-key` help dialog
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'LazyLoad',
+      callback = function(event)
+        if event.data == 'which-key.nvim' then
+          vim.schedule(WhichKeyMiniAiKeymap)
+          return true
+        end
+      end,
+    })
+
     -- Make surrounding and removing/editing text surroundings easier
     require('mini.surround').setup()
 
