@@ -50,7 +50,9 @@ return {
     map('n', '<leader>fd', builtin.diagnostics, 'Find Diagnostics')
     map('n', '<leader>fr', builtin.resume, 'Find Resume')
     map('n', '<leader>f.', builtin.oldfiles, 'Find recent files ("." for repeat)')
-    map('n', '<leader><leader>', builtin.buffers, 'find existing buffers')
+    map('n', '<leader><leader>', function()
+      builtin.buffers { ignore_current_buffer = true, sort_lastused = true }
+    end, 'find existing buffers')
 
     map('n', '<leader>/', function()
       -- There is no need for such a large UI when searching through the current file, as we already are familiar with it.
