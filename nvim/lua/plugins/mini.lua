@@ -94,6 +94,7 @@ return {
     -- Make surrounding and removing/editing text surroundings easier
     require('mini.surround').setup()
 
+    -- Enhance the available Nerd Font icon set within Neovim
     require('mini.icons').setup {
       init = function()
         package.preload['nvim-web-devicons'] = function()
