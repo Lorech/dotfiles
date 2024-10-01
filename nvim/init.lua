@@ -27,6 +27,7 @@ require('lazy').setup({
   require 'plugins.comments',
   require 'plugins.completions',
   require 'plugins.conform',
+  require 'plugins.copilot',
   require 'plugins.gitsigns',
   require 'plugins.indents',
   require 'plugins.lsp',
