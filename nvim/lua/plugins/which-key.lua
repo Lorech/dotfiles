@@ -106,6 +106,13 @@ return {
         F11 = '<F11>',
         F12 = '<F12>',
       },
+      rules = {
+        {
+          plugin = 'cheatsheet.nvim',
+          icon = '',
+          color = 'purple',
+        },
+      },
     },
     -- Document existing key chains
     spec = {
