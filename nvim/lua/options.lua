@@ -26,6 +26,13 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Set up tabs for 2 char width, prefer spaces instead, auto-indent newlines
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+
 -- Keep signcolumn on by default
 -- Allocate two columns to support staged and unstaged Git changes from gitsigns
 vim.opt.signcolumn = 'yes:2'
