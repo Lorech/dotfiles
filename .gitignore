@@ -11,5 +11,8 @@
 # Neovim
 !/nvim
 
+# WezTerm
+!/wezterm
+
 # Misc. files
 *.DS_Store
