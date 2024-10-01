@@ -14,7 +14,7 @@ return {
         end
       end,
       mode = { 'n', 'x' },
-      desc = 'Telescope: Find Yanks',
+      desc = 'Yanky: Find Yanks',
     },
     { 'y', '<Plug>(YankyYank)', mode = { 'n', 'x' }, desc = 'Yanky: Yank' },
     { 'p', '<Plug>(YankyPutAfter)', mode = { 'n', 'x' }, desc = 'Yanky: Put after cursor' },
