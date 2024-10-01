@@ -17,9 +17,9 @@ local current = {
 -- Generate a configuration to load all the defined colorschemes with lazy.nvim
 local colorschemes = {}
 for _, plugin in pairs(ensure_installed) do
-  local colorscheme = { plugin, lazy = true }
+  local colorscheme = { plugin, lazy = false }
   if plugin == current.plugin then
-    colorscheme['lazy'] = false
+    colorscheme['lazy'] = true
     colorscheme['priority'] = 1000
     colorscheme['init'] = function()
       vim.cmd.colorscheme(current.colorscheme)
