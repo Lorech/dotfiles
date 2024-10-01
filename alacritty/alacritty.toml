@@ -6,6 +6,7 @@ padding.x = 10
 padding.y = 10
 decorations = "None"
 dynamic_title = false
+option_as_alt = "OnlyLeft"
 
 [font]
 normal.family = "CaskaydiaMono Nerd Font"
