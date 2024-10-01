@@ -36,6 +36,7 @@ require('lazy').setup({
   require 'plugins.sleuth',
   require 'plugins.telescope',
   require 'plugins.treesitter',
+  require 'plugins.trouble',
   require 'plugins.which-key',
   require 'plugins.yanky',
 }, {
