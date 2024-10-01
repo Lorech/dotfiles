@@ -19,6 +19,9 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
+-- Add visual columns for long lines
+vim.opt.colorcolumn = '80,120'
+
 -- Save undo history
 vim.opt.undofile = true
 
