@@ -1,6 +1,7 @@
 -- Colorscheme plugins to keep installed using lazy.nvim
 local ensure_installed = {
   'folke/tokyonight.nvim',
+  'rose-pine/neovim',
 }
 
 -- The current colorscheme to use
@@ -9,8 +10,8 @@ local ensure_installed = {
 -- within lazy.nvim, and will apply the provided colorscheme within Neovim
 -- when this plugin initializes, setting the custom colorscheme as soon as possible
 local current = {
-  plugin = 'folke/tokyonight.nvim',
-  colorscheme = 'tokyonight-night',
+  plugin = 'rose-pine/neovim',
+  colorscheme = 'rose-pine-moon',
 }
 
 -- Generate a configuration to load all the defined colorschemes with lazy.nvim
