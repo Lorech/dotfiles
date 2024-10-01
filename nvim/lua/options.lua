@@ -65,3 +65,6 @@ vim.opt.scrolloff = 10
 
 -- Allow selecting whitespace in block editing mode
 vim.opt.virtualedit = 'block'
+
+-- Consider kebab-case as words
+vim.opt.iskeyword:append '-'
