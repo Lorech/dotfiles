@@ -35,6 +35,7 @@ require('lazy').setup({
   require 'plugins.neotree',
   require 'plugins.sleuth',
   require 'plugins.telescope',
+  require 'plugins.tmux-navigator',
   require 'plugins.treesitter',
   require 'plugins.trouble',
   require 'plugins.which-key',

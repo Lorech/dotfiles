@@ -19,12 +19,22 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
+-- Add visual columns for long lines
+vim.opt.colorcolumn = '80,120'
+
 -- Save undo history
 vim.opt.undofile = true
 
 -- Make searching case-insensitive unless \C or if capital letters are present in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Set up tabs for 2 char width, prefer spaces instead, auto-indent newlines
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.smarttab = true
 
 -- Keep signcolumn on by default
 -- Allocate two columns to support staged and unstaged Git changes from gitsigns
@@ -55,3 +65,6 @@ vim.opt.scrolloff = 10
 
 -- Allow selecting whitespace in block editing mode
 vim.opt.virtualedit = 'block'
+
+-- Consider kebab-case as words
+vim.opt.iskeyword:append '-'

@@ -8,8 +8,11 @@
 !.gitignore
 !README.md
 
-# Neovim
+# Tools
+!/alacritty
 !/nvim
+!/tmux
+/tmux/plugins
 
 # Misc. files
 *.DS_Store
