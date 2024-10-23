@@ -30,6 +30,7 @@ require('lazy').setup({
   require 'plugins.conform',
   require 'plugins.copilot',
   require 'plugins.gitsigns',
+  require 'plugins.hop',
   require 'plugins.indents',
   require 'plugins.lsp',
   require 'plugins.mini',
