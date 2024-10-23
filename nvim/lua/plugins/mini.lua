@@ -117,5 +117,11 @@ return {
     statusline.section_location = function()
       return '%2l:%-2v'
     end
+
+    -- A modal, buffer-based file explorer
+    require('mini.files').setup()
+
+    -- Custom keymaps for mini plugins
+    vim.keymap.set('n', '<leader>wr', ':lua MiniFiles.open()<CR>', { silent = true, desc = 'Mini: Workspace Reveal' })
   end,
 }
