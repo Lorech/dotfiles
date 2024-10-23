@@ -135,6 +135,11 @@ return {
       --
       -- See `:help lspconfig-all` for pre-configured and available LSPs
       local servers = {
+        -- Web and adjacent
+        html = {},
+        cssls = {},
+        ts_ls = {},
+        -- Lua for Neovim config editing
         lua_ls = {
           settings = {
             Lua = {
