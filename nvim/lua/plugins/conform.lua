@@ -33,7 +33,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       typescript = { 'prettier', 'eslint' },
-      typescriptreact = { 'prettier', 'eslint' },
+      tsx = { 'prettier', 'eslint' },
     },
   },
 }

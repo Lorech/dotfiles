@@ -139,6 +139,8 @@ return {
         html = {},
         cssls = {},
         ts_ls = {},
+        eslint = {},
+        prettier = {},
         -- Lua for Neovim config editing
         lua_ls = {
           settings = {
