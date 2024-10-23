@@ -123,6 +123,7 @@ return {
       { '<leader>w', group = 'Workspace', icon = { icon = '󰙅', color = 'yellow' } },
       { '<leader>t', group = 'Toggle' },
       { '<leader>h', group = 'Hunk', mode = { 'n', 'v' }, icon = { icon = '󰊢', color = 'orange' } },
+      { '<leader>j', group = 'Jump', icon = { icon = '', color = 'cyan' } },
       { '<leader>x', group = 'Trouble', icon = { icon = '󰙅', color = 'red' } },
     },
   },

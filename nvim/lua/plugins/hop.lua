@@ -18,15 +18,44 @@ return {
     -- Replace built-in f/F/t/T with hop actions for single characters
     map('f', function()
       hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = true }
-    end, 'forward to character', { remap = true })
+    end, 'Jump forward to character', { remap = true })
     map('F', function()
       hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = true }
-    end, 'backward to character', { remap = true })
+    end, 'Jump backward to character', { remap = true })
     map('t', function()
       hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 }
-    end, 'forward until character', { remap = true })
+    end, 'Jump forward until character', { remap = true })
     map('T', function()
       hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 }
-    end, 'backward until character', { remap = true })
+    end, 'Jump backward until character', { remap = true })
+
+    -- Add custom keymaps for Hop
+    map('<leader>jf', function()
+      hop.hint_char2 { direction = directions.AFTER_CURSOR, current_line_only = true }
+    end, 'Jump forward to character pair')
+    map('<leader>jF', function()
+      hop.hint_char2 { direction = directions.BEFORE_CURSOR, current_line_only = true }
+    end, 'Jump backward to character pair')
+    map('<leader>jt', function()
+      hop.hint_char2 { direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 }
+    end, 'Jump forward until character pair')
+    map('<leader>jT', function()
+      hop.hint_char2 { direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 }
+    end, 'Jump backward until character pair')
+    map('<leader>jl', function()
+      hop.hint_lines {}
+    end, 'Jump to Line')
+    map('<leader>jL', function()
+      hop.hint_lines_skip_whitespace {}
+    end, 'Jump to Line start')
+    map('<leader>jv', function()
+      hop.hint_vertical {}
+    end, 'Jump Vertically')
+    map('<leader>j/', function()
+      hop.hint_patterns {}
+    end, 'Jump to pattern')
+    map('<leader>jw', function()
+      hop.hint_words {}
+    end, 'Jump to Word')
   end,
 }
