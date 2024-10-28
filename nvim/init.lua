@@ -34,7 +34,7 @@ require('lazy').setup({
   require 'plugins.indents',
   require 'plugins.lsp',
   require 'plugins.mini',
-  -- require 'plugins.neotree',
+  require 'plugins.neotree',
   require 'plugins.sleuth',
   require 'plugins.telescope',
   require 'plugins.tmux-navigator',
