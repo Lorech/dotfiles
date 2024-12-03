@@ -1,3 +1,5 @@
+local table = require 'utils.table'
+
 -- Adds the ability to jump to characters across the buffer with a single keypress
 return {
   'smoka7/hop.nvim',
@@ -11,7 +13,7 @@ return {
 
     -- Utility function for auto-generating keymaps related to Hop
     local map = function(keys, func, desc, opts)
-      local options = Merge({ desc = 'Hop: ' .. desc }, opts or {})
+      local options = table.merge({ desc = 'Hop: ' .. desc }, opts or {})
       vim.keymap.set('', keys, func, options)
     end
 
