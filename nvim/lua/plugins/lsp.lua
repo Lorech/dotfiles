@@ -141,6 +141,7 @@ return {
         ts_ls = {},
         eslint = {},
         prettier = {},
+        biome = {},
         -- Lua for Neovim config editing
         lua_ls = {
           settings = {
