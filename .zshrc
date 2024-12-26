@@ -114,3 +114,6 @@ export PATH=$HOME/.gem/bin:$PATH
 
 # Add Flutter and Dart to shell for Flutter development.
 export PATH=$HOME/Development/installs/flutter/bin:$PATH
+
+# Use Starship.
+eval "$(starship init zsh)"
