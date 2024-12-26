@@ -35,6 +35,7 @@ require('lazy').setup({
   require 'plugins.mini',
   require 'plugins.neotree',
   require 'plugins.sleuth',
+  require 'plugins.tailwind',
   require 'plugins.telescope',
   require 'plugins.tmux-navigator',
   require 'plugins.treesitter',

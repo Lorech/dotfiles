@@ -16,7 +16,7 @@ return {
   },
   opts = {
     notify_on_error = false,
-    format_on_save = function(bufnr)
+    format_after_save = function(bufnr)
       -- Disable "format_on_save lsp_fallback" for languages that don't have a  standardized coding style.
       local disable_filetypes = { c = true, cpp = true }
       local lsp_format_opt
@@ -32,8 +32,11 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      typescript = { 'prettier', 'eslint' },
-      tsx = { 'prettier', 'eslint' },
+      astro = { 'prettier', 'eslint' },
+      javascript = { 'biome' },
+      typescript = { 'biome' },
+      typescriptreact = { 'biome' },
+      sql = { 'sqlfmt' },
     },
   },
 }

@@ -135,13 +135,18 @@ return {
       --
       -- See `:help lspconfig-all` for pre-configured and available LSPs
       local servers = {
-        -- Web and adjacent
+        -- DevOps
+        dockerls = {},
+        sqlls = {},
+        -- Web
         html = {},
         cssls = {},
         ts_ls = {},
         eslint = {},
         prettier = {},
-        -- Lua for Neovim config editing
+        astro = {},
+        -- Independent languages
+        dotls = {},
         lua_ls = {
           settings = {
             Lua = {
