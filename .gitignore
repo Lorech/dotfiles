@@ -8,6 +8,9 @@
 !.gitignore
 !README.md
 
+# Terminal
+!.zshrc
+
 # Tools
 !/aerospace
 !/alacritty
