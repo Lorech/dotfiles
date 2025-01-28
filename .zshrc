@@ -116,4 +116,5 @@ export PATH=$HOME/.gem/bin:$PATH
 export PATH=$HOME/Development/installs/flutter/bin:$PATH
 
 # Use Starship.
+export STARSHP_CONFIG="$HOME/.config/starship/starship.toml"
 eval "$(starship init zsh)"
