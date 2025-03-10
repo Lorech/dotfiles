@@ -16,6 +16,7 @@
 !/starship
 !/tmux
 /tmux/plugins
+!/waybar
 
 # Misc. files
 *.DS_Store
