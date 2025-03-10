@@ -1,0 +1,16 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+right_format = """
+$cmd_duration\
+$time"""
+
+[hostname]
+ssh_only = false
+
+[username]
+show_always = true
+
+[time]
+disabled = false
+use_12hr = true
