@@ -11,6 +11,7 @@
 # Tools
 !/aerospace
 !/alacritty
+!/hypr
 !/nvim
 !/starship
 !/tmux
