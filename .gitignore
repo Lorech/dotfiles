@@ -12,6 +12,7 @@
 !/aerospace
 !/alacritty
 !/hypr
+/hypr/hyprpaper.conf
 !/nvim
 !/starship
 !/tmux
