@@ -135,6 +135,11 @@
         },
         "on-click": "pavucontrol"
     },
+    "hyprland/language": {
+        "format": "  {}",
+        "format-en": "EN",
+        "format-lv": "LV"
+    },
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
