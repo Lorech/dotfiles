@@ -1,7 +1,12 @@
 // -*- mode: jsonc -*-
 {
-    "height": 30,
+    "height": 32,
     "spacing": 4,
+    "margin-top": 8,
+    "margin-bottom": 0,
+    "margin-left": 8,
+    "margin-right": 8,
+    "reload_style_on_change": true,
     "modules-left": [
         "custom/power",
         "custom/media"
@@ -19,7 +24,7 @@
         "cpu",
         "memory",
         "keyboard-state",
-        "sway/language",
+        "hyprland/language",
         "battery",
         "clock",
         "tray",
@@ -33,9 +38,6 @@
             "locked": "",
             "unlocked": ""
         }
-    },
-    "hyprland/submap": {
-        "format": "<span style=\"italic\">{}</span>"
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -133,6 +135,9 @@
         },
         "on-click": "pavucontrol"
     },
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
     "custom/media": {
         "format": "{icon} {0}",
         "return-type": "json",
@@ -144,30 +149,18 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/modules/media_player.py 2> /dev/null"
     },
-    "custom/power": {
-        "format" : "⏻ ",
-        "tooltip": false,
-        "menu": "on-click",
-        "menu-file": "$HOME/.config/waybar/modules/power_menu.xml",
-        "menu-actions": {
-            "shutdown": "shutdown",
-            "reboot": "reboot",
-            "suspend": "systemctl suspend",
-            "hibernate": "systemctl hibernate"
-        }
-    },
     "custom/notification": {
         "tooltip": false,
-        "format": "{} {icon}",
+        "format": "{icon}",
         "format-icons": {
-          "notification": "<span foreground='red'><sup></sup></span>",
-          "none": "",
-          "dnd-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-none": "",
-          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "inhibited-none": "",
-          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-inhibited-none": ""
+          "none": "󰂜",
+          "notification": "󰂚",
+          "dnd-none": "󰪑",
+          "dnd-notification": "󰂛",
+          "inhibited-none": "󰂟",
+          "inhibited-notification": "󰂞",
+          "dnd-inhibited-none": "󰪑",
+          "dnd-inhibited-notification": "󰂛"
         },
         "return-type": "json",
         "exec-if": "which swaync-client",
@@ -175,5 +168,17 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
+    },
+    "custom/power": {
+        "format" : "󰣇",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/modules/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "systemctl poweroff",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate"
+        }
     },
 }
