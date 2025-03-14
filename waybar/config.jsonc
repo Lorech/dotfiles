@@ -1,14 +1,15 @@
 // -*- mode: jsonc -*-
 {
     "height": 32,
-    "spacing": 4,
     "margin-top": 8,
-    "margin-bottom": 0,
+    "margin-bottom": 0, // Let Hyprland decide how large this gap is.
     "margin-left": 8,
     "margin-right": 8,
     "reload_style_on_change": true,
     "modules-left": [
         "custom/power",
+        "cpu",
+        "memory",
         "custom/media"
     ],
     "modules-center": [
@@ -16,20 +17,38 @@
         "hyprland/submap",
     ],
     "modules-right": [
-        "mpd",
-        "idle_inhibitor",
+        "tray",
         "pulseaudio",
         "network",
         "power-profiles-daemon",
-        "cpu",
-        "memory",
-        "keyboard-state",
+        "keyboard-state", // TODO
         "hyprland/language",
         "battery",
         "clock",
-        "tray",
         "custom/notification"
     ],
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%A, %d %B %I:%m %p}",
+        "format-alt": "{:%r}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -39,117 +58,58 @@
             "unlocked": ""
         }
     },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        "spacing": 10
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "EN",
+        "format-lv": "LV"
     },
     "memory": {
-        "format": "{}% "
+        "format": "  {}%"
     },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+    "network": {
+        "format-disconnected": "⚠ ",
+        "format-linked": "󰅛 ",
+        "format-ethernet": "<span font=\"13\">󰈀 </span>",
+        "format-wifi": " ",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "power-profiles-daemon": {
       "format": "{icon}",
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
       "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
+        "default": " ",
+        "performance": "󰓅 ",
+        "balanced": " ",
+        "power-saver": " "
       }
     },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}",
+        "format-muted": "0%  ",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-bluetooth-muted": "0%   {icon} {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "default": ["", " ", " "]
         },
         "on-click": "pavucontrol"
     },
-    "hyprland/language": {
-        "format": "  {}",
-        "format-en": "EN",
-        "format-lv": "LV"
-    },
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        "spacing": 10
     },
     "custom/media": {
         "format": "{icon} {0}",
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
-            "spotify": "",
-            "default": "🎜"
+            "spotify": "<span font=\"14\" rise=\"-1500\"> </span>",
+            "default": "<span font=\"14\">🎜 </span>"
         },
         "escape": true,
         "exec": "$HOME/.config/waybar/modules/media_player.py 2> /dev/null"
@@ -158,14 +118,14 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-          "none": "󰂜",
-          "notification": "󰂚",
-          "dnd-none": "󰪑",
-          "dnd-notification": "󰂛",
-          "inhibited-none": "󰂟",
-          "inhibited-notification": "󰂞",
-          "dnd-inhibited-none": "󰪑",
-          "dnd-inhibited-notification": "󰂛"
+          "none": "󰂜 ",
+          "notification": "󰂚 ",
+          "dnd-none": "󰪑 ",
+          "dnd-notification": "󰂛 ",
+          "inhibited-none": "󰂟 ",
+          "inhibited-notification": "󰂞 ",
+          "dnd-inhibited-none": "󰪑 ",
+          "dnd-inhibited-notification": "󰂛 "
         },
         "return-type": "json",
         "exec-if": "which swaync-client",
@@ -175,7 +135,7 @@
         "escape": true
     },
     "custom/power": {
-        "format" : "󰣇",
+        "format" : "󰣇 ",
         "tooltip": false,
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/modules/power_menu.xml",
