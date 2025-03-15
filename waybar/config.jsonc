@@ -139,10 +139,11 @@
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/modules/power_menu.xml",
         "menu-actions": {
-            "shutdown": "systemctl poweroff",
-            "reboot": "reboot",
+            "lock": "loginctl lock-session",
             "suspend": "systemctl suspend",
-            "hibernate": "systemctl hibernate"
+            "hibernate": "systemctl hibernate",
+            "shutdown": "systemctl poweroff",
+            "reboot": "reboot"
         }
     },
 }
