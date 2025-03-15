@@ -65,7 +65,7 @@ TLDR: Install Tmux Plugin Manager
 <details>
 <summary>ZSH</summary>
 
-This is not documented yet.
+My ZSH configuration uses the [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) theme, which needs to be manually installed before it can be used. Follow the installation instructions in the README file at the linked repository.
 
-I don't have a TLDR either, as I have not even compiled a configuration yet, sorry.
+Once installed, you can simply copy the `.zshrc` file from this repository to `~`, replacing the preset configuration created by oh-my-zsh if you had already created it.
 </details>
