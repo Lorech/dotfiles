@@ -21,7 +21,7 @@
         "pulseaudio",
         "network",
         "power-profiles-daemon",
-        "keyboard-state", // TODO
+        "keyboard-state",
         "hyprland/language",
         "battery",
         "clock",
@@ -50,12 +50,11 @@
         "tooltip": true
     },
     "keyboard-state": {
-        "numlock": true,
         "capslock": true,
-        "format": "{name} {icon}",
+        "format": "{icon}",
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": " ",
+            "unlocked": ""
         }
     },
     "hyprland/language": {
@@ -109,7 +108,7 @@
         "max-length": 40,
         "format-icons": {
             "spotify": "<span font=\"14\" rise=\"-1500\"> </span>",
-            "default": "<span font=\"14\">🎜 </span>"
+            "default": "<span font=\"13\" rise=\"-1500\">🎜 </span>"
         },
         "escape": true,
         "exec": "$HOME/.config/waybar/modules/media_player.py 2> /dev/null"
