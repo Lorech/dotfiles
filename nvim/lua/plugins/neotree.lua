@@ -10,6 +10,8 @@ return {
   cmd = 'Neotree',
   keys = {
     { '<leader>wr', ':Neotree filesystem reveal toggle<CR>', desc = 'Neotree: Workspace Reveal', silent = true },
+    { '<leader>wb', ':Neotree buffers reveal toggle<CR>', desc = 'Neotree: Workspace Buffers', silent = true },
+    { '<leader>wc', ':Neotree git_status reveal toggle<CR>', desc = 'Neotree: Workspace Changes', silent = true },
   },
   opts = {
     default_component_configs = {
