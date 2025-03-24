@@ -47,7 +47,7 @@ return {
             local relPath = string.gsub(absPath, cwd, '')
             vim.fn.setreg('+', relPath, 'c')
           end,
-          desc = 'Yank relative path',
+          desc = 'yank_relative_path',
         },
         ['YY'] = {
           function(state)
@@ -55,7 +55,7 @@ return {
             local absPath = node:get_id()
             vim.fn.setreg('+', absPath, 'c')
           end,
-          desc = 'Yank absolute path',
+          desc = 'yank_absolute_path',
         },
         ['K'] = {
           function(state)
@@ -65,7 +65,7 @@ return {
             local renderer = require 'neo-tree.ui.renderer'
             renderer.focus_node(state, siblings[1]:get_id())
           end,
-          desc = 'Jump to first sibling',
+          desc = 'first_sibling',
         },
         ['J'] = {
           function(state)
@@ -75,7 +75,7 @@ return {
             local renderer = require 'neo-tree.ui.renderer'
             renderer.focus_node(state, siblings[#siblings]:get_id())
           end,
-          desc = 'Jump to last sibling',
+          desc = 'last_sibling',
         },
       },
     },
