@@ -30,13 +30,18 @@ return {
         lsp_format = lsp_format_opt,
       }
     end,
-    formatters_by_ft = {
-      lua = { 'stylua' },
-      astro = { 'prettier', 'eslint' },
-      javascript = { 'biome' },
-      typescript = { 'biome' },
-      typescriptreact = { 'biome' },
-      sql = { 'sqlfmt' },
-    },
+    formatters_by_ft = (function()
+      local hostname = vim.loop.os_gethostname()
+
+      if hostname == 'Lauriss-MacBook-Pro-2.local' then
+        return require 'plugins.conform.work'
+      elseif hostname == 'Lauriss-MacBook-Pro.local' then
+        return require 'plugins.conform.laptop'
+      elseif hostname == 'Fractal' then
+        return require 'plugins.conform.desktop'
+      else
+        return require 'plugins.conform.shared'
+      end
+    end)(),
   },
 }

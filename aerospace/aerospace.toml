@@ -76,9 +76,6 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-d = 'workspace D' # Debug
-alt-e = 'workspace E' # Email
-alt-s = 'workspace S' # Social
 
 # Moves node to another workspace and then switches to that workspace
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -91,9 +88,6 @@ alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
 alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
 alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
 alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
-alt-shift-d = ['move-node-to-workspace D', 'workspace D'] # Debug
-alt-shift-e = ['move-node-to-workspace E', 'workspace E'] # Email
-alt-shift-s = ['move-node-to-workspace S', 'workspace S'] # Social
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'

@@ -19,6 +19,7 @@
 !/tmux
 /tmux/plugins
 !/waybar
+!/zed/**/*.json
 
 # Misc. files
 *.DS_Store
