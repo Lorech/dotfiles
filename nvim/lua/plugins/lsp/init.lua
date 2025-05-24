@@ -134,31 +134,17 @@ return {
       -- See documentation for each LSP to find what configurations they may support
       --
       -- See `:help lspconfig-all` for pre-configured and available LSPs
-      local servers = {
-        -- DevOps
-        dockerls = {},
-        sqlls = {},
-        -- Web
-        html = {},
-        cssls = {},
-        ts_ls = {},
-        eslint = {},
-        prettier = {},
-        astro = {},
-        -- Independent languages
-        dotls = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-              -- Ignore Lua_LS's noisy `missing-fields` warnings
-              diagnostics = { disable = { 'missing-fields' } },
-            },
-          },
-        },
-      }
+      local servers = require 'plugins.conform.shared'
+
+      -- Apply an override based on the device if applicable.
+      local hostname = vim.loop.os_gethostname()
+      if hostname == 'Lauriss-MacBook-Pro-2.local' then
+        return require 'plugins.conform.work'
+      elseif hostname == 'Lauriss-MacBook-Pro.local' then -- TODO: Check if this is correct
+        return require 'plugins.conform.laptop'
+      elseif hostname == 'Fractal' then -- TODO: Check if this is correct
+        return require 'plugins.conform.desktop'
+      end
 
       -- Ensure the servers and tools above are installed
       --  See `:Mason` for current status of tools or manual install of non-configured tools
@@ -166,9 +152,6 @@ return {
 
       -- Configure other LSP-related tools to install to work within Neovim
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Lua code formatter
-      })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {

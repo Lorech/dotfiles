@@ -1,85 +1,64 @@
 -- Autocompletion support while editing.
---  See `:help cmp`
---
--- `nvim-cmp` is the wrapper that drives the completions, dependenices installed to
--- this plugin are what provide various completion integrations in the engine.
 return {
-  'hrsh7th/nvim-cmp',
-  event = 'InsertEnter',
-  dependencies = {
-    -- The main snippet engine for generating snippets
-    {
-      'L3MON4D3/LuaSnip',
-      build = (function()
-        if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-          return
-        end
-        return 'make install_jsregexp'
-      end)(),
-      dependencies = {
-        -- Helper snippets for various code presets similar to VS Code.
-        {
-          'rafamadriz/friendly-snippets',
-          config = function()
-            require('luasnip.loaders.from_vscode').lazy_load()
-          end,
-        },
+  'saghen/blink.cmp',
+  dependencies = { 'rafamadriz/friendly-snippets' },
+  version = '1.*',
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
+  opts = {
+    keymap = {
+      preset = 'none',
+      -- Documentation
+      ['<C-e>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+      -- Navigation; uses standard keymap familiar from other plugins
+      ['<Up>'] = { 'select_prev', 'fallback' },
+      ['<Down>'] = { 'select_next', 'fallback' },
+      ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
+      ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+      -- Completion; uses the snippet under the cursor, or the first one otherwise.
+      ['<Tab>'] = {
+        function(cmp)
+          if cmp.snippet_active() then
+            return cmp.accept()
+          else
+            return cmp.select_and_accept()
+          end
+        end,
+        'snippet_forward',
+        'fallback',
       },
     },
-    -- Snippets to add to the Luasnip engine
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-path' },
-  },
-  config = function()
-    local cmp = require 'cmp'
-    local luasnip = require 'luasnip'
-    luasnip.config.setup {}
-
-    cmp.setup {
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
-      completion = { completeopt = 'menu,menuone,noinsert' },
-      mapping = cmp.mapping.preset.insert {
-        -- Select the next or previous item
-        ['<Tab>'] = cmp.mapping.select_next_item(),
-        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-
-        -- Scroll the documentation window up or down
-        ['<C-k>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-j>'] = cmp.mapping.scroll_docs(4),
-
-        -- Accept the completion, run auto-imports if the LSP supports them.
-        ['<CR>'] = cmp.mapping.confirm { select = true },
-
-        -- Manually trigger a completion from nvim-cmp
-        -- Generally not required, as completions should show if any are available
-        ['<C-Space>'] = cmp.mapping.complete {},
-
-        -- Navigate between snippet completion areas, e.g., variable names
-        ['<C-l>'] = cmp.mapping(function()
-          if luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-          end
-        end, { 'i', 's' }),
-        ['<C-h>'] = cmp.mapping(function()
-          if luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
-          end
-        end, { 'i', 's' }),
-      },
-      sources = {
-        {
-          name = 'lazydev',
-          group_index = 0,
+    appearance = {
+      nerd_font_variant = 'mono',
+    },
+    completion = {
+      list = {
+        selection = {
+          preselect = false,
+          auto_insert = false,
         },
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'path' },
       },
-    }
-  end,
+      ghost_text = {
+        enabled = false,
+      },
+      menu = { border = 'single' },
+      documentation = { window = { border = 'single' } },
+    },
+    sources = {
+      default = function()
+        local success, node = pcall(vim.treesitter.get_node)
+        if success and node and vim.tbl_contains({ 'comment', 'line_comment', 'block_comment' }, node:type()) then
+          return { 'buffer' }
+        elseif vim.bo.filetype == 'lua' then
+          return { 'lsp', 'path' }
+        else
+          return { 'lsp', 'path', 'snippets', 'buffer' }
+        end
+      end,
+    },
+    fuzzy = { implementation = 'prefer_rust_with_warning' },
+  },
+  opts_extend = { 'sources.default' },
 }
