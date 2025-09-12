@@ -10,4 +10,5 @@ return vim.tbl_deep_extend('force', base, {
   cssls = {},
   tsserver = {},
   eslint = {},
+  somesass_ls = {},
 })
