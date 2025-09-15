@@ -12,11 +12,6 @@
 -- See `:Telescope colorscheme` to preview the themes
 local ensure_installed = {
   {
-    'folke/tokyonight.nvim',
-    colorscheme = 'tokyonight-night',
-    active = false,
-  },
-  {
     'rose-pine/neovim',
     name = 'rose-pine',
     colorscheme = 'rose-pine-moon',
