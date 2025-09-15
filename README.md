@@ -18,6 +18,7 @@ git clone git@github.com:Lorech/dotfiles.git ~/.config --recurse-submodules
 
 <details>
 <summary>Neovim</summary>
+
 Development plugins (LSP and code formatting) are split between different computers, allowing installation and configuration only for languages that are required on a specific computer, as my personal and my work needs may be different.
 
 The main configuration happens inside `nvim/lua/plugins/{conform,lsp}/init.lua`, which loads one of the nearby configuration based on the running computer's hostname, which allows it to be extensible and flexible.
@@ -31,6 +32,7 @@ Neovim is configured to use GitHub Copilot using [Code Companion](https://github
 
 <details>
 <summary>Starship</summary>
+
 Currently undocumented.
 
 TLDR: Configure your shell to use Starship
@@ -38,6 +40,7 @@ TLDR: Configure your shell to use Starship
 
 <details>
 <summary>Tmux</summary>
+
 Currently undocumented.
 
 TLDR: Install Tmux Plugin Manager
@@ -45,7 +48,8 @@ TLDR: Install Tmux Plugin Manager
 
 <details>
 <summary>ZSH</summary>
-The ZSH configuration uses the [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) theme, which needs to be manually installed before it can be used. Follow the installation instructions in the README file at the linked repository. Once installed, the ZSH configuration can be symlinked for use on the system:
+
+The ZSH configuration uses [`oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh), which needs to be manually installed before it can be used. Follow the installation instructions in the README file at the linked repository. Once installed, the ZSH configuration can be symlinked for use on the system:
 
 ```sh
 ln -s ~/.config/.zshrc ~/.zshrc
