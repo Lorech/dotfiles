@@ -6,6 +6,7 @@
 
 # Repository
 !.gitignore
+!.gitmodules
 !README.md
 
 # Tools
