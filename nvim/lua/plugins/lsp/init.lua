@@ -123,7 +123,11 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-      -- Enabled language servers
+      -- Enabled language servers, which are set on a per-device basis
+      --
+      -- To add a new device to the list, determine it's hostname and add a configuration below.
+      -- Each new configuration should extend from the `shared` LSP configuration, ensuring some
+      -- consistency between devices, for example, to allow making changes in Neovim configs.
       --
       -- The objects support overriding some features of the language server based on the following keys:
       --  - cmd (table): Override the default command used to start the server
@@ -134,16 +138,16 @@ return {
       -- See documentation for each LSP to find what configurations they may support
       --
       -- See `:help lspconfig-all` for pre-configured and available LSPs
-      local servers = require 'plugins.conform.shared'
-
-      -- Apply an override based on the device if applicable.
+      local servers
       local hostname = vim.loop.os_gethostname()
-      if hostname == 'Lauriss-MacBook-Pro-2.local' then
-        return require 'plugins.conform.work'
-      elseif hostname == 'Lauriss-MacBook-Pro.local' then -- TODO: Check if this is correct
-        return require 'plugins.conform.laptop'
+      if hostname == 'Lauriss-MacBook-Pro.local' then -- TODO: Check if this is correct
+        servers = require 'plugins.lsp.laptop'
+      elseif hostname == 'Lauriss-MacBook-Pro-2.local' then
+        servers = require 'plugins.lsp.work'
       elseif hostname == 'Fractal' then -- TODO: Check if this is correct
-        return require 'plugins.conform.desktop'
+        servers = require 'plugins.lsp.desktop'
+      else
+        servers = require 'plugins.lsp.shared'
       end
 
       -- Ensure the servers and tools above are installed
