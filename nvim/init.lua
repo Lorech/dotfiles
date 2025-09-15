@@ -23,8 +23,8 @@ require('lazy').setup({
   require 'colorschemes',
   -- Standalone plugins
   require 'plugins.autopairs',
-  require 'plugins.avante',
   require 'plugins.cheatsheet',
+  require 'plugins.codecompanion',
   require 'plugins.comments',
   require 'plugins.completions',
   require 'plugins.conform',
