@@ -16,6 +16,13 @@ local ensure_installed = {
     name = 'rose-pine',
     colorscheme = 'rose-pine-moon',
     active = true,
+    config = function()
+      require('rose-pine').setup {
+        styles = {
+          transparency = true,
+        },
+      }
+    end,
   },
 }
 
