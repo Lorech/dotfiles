@@ -8,6 +8,7 @@ return vim.tbl_deep_extend('force', base, {
   -- Web
   html = {},
   cssls = {},
-  tsserver = {},
+  ts_ls = {},
   eslint = {},
+  somesass_ls = {},
 })
