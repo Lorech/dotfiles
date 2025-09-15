@@ -2,8 +2,8 @@
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
-ZSH_CUSTOM="$HOME/.config/zsh"
+DOTFILES="$HOME/.config"
+ZSH_CUSTOM="$DOTFILES/zsh"
 
 zstyle ':omz:update' mode auto # Update automatically
 
@@ -28,6 +28,11 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 source $ZSH/oh-my-zsh.sh
 
+### MARK: Custom Aliases
+
+alias "ls"="eza --icons"
+alias "ls -la"="eza -l -g --icons"
+
 ### MARK: User Configuration
 
 # Preferred editor for local and remote sessions
@@ -43,6 +48,9 @@ if [[ "$HOST" == "Fractal" ]] then
     exec uwsm start hyprland.desktop
   fi
 fi
+
+# Use the Eza theme configuration from this directory
+export EZA_CONFIG_DIR="$DOTFILES/eza"
 
 # Use the Starship theme for ZSH
 export STARSHIP_CONFIG=~/.config/starship/starship.toml

@@ -56,5 +56,7 @@ ln -s ~/.config/.zshrc ~/.zshrc
 ```
 
 Any plugins that are installed to be used together with `oh-my-zsh` should be cloned with the existing Git submodules in the repository, and should therefore work out of the box.
+
+In addition to `oh-my-zsh`, [`eza`](https://github.com/eza-community/eza) has been aliased as a replacement for the native `ls` command, and must be installed based on the install instructions from their README.
 </details>
 
