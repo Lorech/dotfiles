@@ -53,5 +53,5 @@ fi
 export EZA_CONFIG_DIR="$DOTFILES/eza"
 
 # Use the Starship theme for ZSH
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CONFIG="$DOTFILES/starship/starship.toml"
 eval "$(starship init zsh)"
