@@ -17,6 +17,7 @@
 !/tmux
 /tmux/plugins
 !/zed/**/*.json
+!zsh
 
 # Misc. files
 *.DS_Store

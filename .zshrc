@@ -1,4 +1,4 @@
-# MARK: ZSH Configuration
+### MARK: ZSH Configuration
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -11,9 +11,13 @@ DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
+### MARK: Plugin Configuration
+
 plugins=(
   git
 )
+
+### MARK: Source
 
 source $ZSH/oh-my-zsh.sh
 
