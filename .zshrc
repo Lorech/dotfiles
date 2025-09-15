@@ -37,9 +37,11 @@ else
   export EDITOR='nvim'
 fi
 
-# Start Hyprland together with the login shell
-if uwsm check may-start; then
-  exec uwsm start hyprland.desktop
+# Start Hyprland together with the login shell on my Arch desktop.
+if [[ "$HOST" == "Fractal" ]] then
+  if uwsm check may-start; then
+    exec uwsm start hyprland.desktop
+  fi
 fi
 
 # Use the Starship theme for ZSH
