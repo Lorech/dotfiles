@@ -21,6 +21,12 @@ git clone git@github.com:Lorech/dotfiles.git ~/.config --recurse-submodules
 Development plugins (LSP and code formatting) are split between different computers, allowing installation and configuration only for languages that are required on a specific computer, as my personal and my work needs may be different.
 
 The main configuration happens inside `nvim/lua/plugins/{conform,lsp}/init.lua`, which loads one of the nearby configuration based on the running computer's hostname, which allows it to be extensible and flexible.
+
+Neovim is configured to use GitHub Copilot using [Code Companion](https://github.com/olimorris/codecompanion.nvim) via [`copilot.lua`](https://github.com/olimorris/codecompanion.nvim). For this integration to work, you must have a GitHub account with an active subscription to Copilot, and authorize the plugin to use your subscription when first launching Neovim:
+
+```sh
+:Copilot auth
+```
 </details>
 
 <details>
