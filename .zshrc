@@ -13,9 +13,12 @@ COMPLETION_WAITING_DOTS="true"
 
 ### MARK: Plugin Configuration
 
+source "$ZSH_CUSTOM/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
+
 plugins=(
   git
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
