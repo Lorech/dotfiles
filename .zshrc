@@ -32,6 +32,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias "ls"="eza --icons"
 alias "ls -la"="eza -l -g --icons"
+alias "pip"="python3 -m pip"
 
 ### MARK: User Configuration
 
