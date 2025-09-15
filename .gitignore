@@ -16,7 +16,6 @@
 !/nvim
 !/starship
 !/tmux
-/tmux/plugins
 !/zed/**/*.json
 !zsh
 
