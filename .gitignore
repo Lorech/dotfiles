@@ -6,15 +6,18 @@
 
 # Repository
 !.gitignore
+!.gitmodules
 !README.md
 
 # Tools
+!.zshrc
 !/aerospace
 !/alacritty
 !/nvim
+!/starship
 !/tmux
-/tmux/plugins
 !/zed/**/*.json
+!zsh
 
 # Misc. files
 *.DS_Store
