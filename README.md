@@ -1,15 +1,18 @@
 # dotfiles
 
-My personal configurations for various tools and configurable software I use on a daily basis. Compatible (with some differences) with macOS and Linux.
+My personal configurations for various tools and configurable software I use on a daily basis. Compatible (with some differences) with both macOS and Linux.
 
 ## Setup
 
 > [!WARNING]
-> Although I tried to be as descriptive as possible with my setup instructions, I have yet to set up a computer from scratch using this repository as a base, so I don't know how it actually behaves when directly cloned.
->
-> For the most part, it should be fine, as most of these tools must be manually installed, but I can't guarantee that everything is accurate and won't cause issues.
+> These setup instructions should theoretically work, but I have yet to do a full computer setup from scratch, so they are untested.
 
-1. Clone the repository into `~/.config/`
+1. Clone the repository and its submodules into `~/.config`:
+
+```sh
+git clone git@github.com:Lorech/dotfiles.git ~/.config --recurse-submodules
+```
+
 2. Install the respective tooling for your operating system
 3. For some tools, additional action is required - see below for any tool you plan to use
 
@@ -41,15 +44,21 @@ You can copy this file naming it `hyprpaper.conf` (this file is ignored from VCS
 <details>
 <summary>Neovim</summary>
 
-The default configuration for LSP and formatting uses a big batch of various languages that I am likely to use at some point on any computer which will definitely cause errors whenever Neovim is opened, unless you happen to have tooling installed for all of these languages. For this reason, you willwant to update `nvim/lua/plugins/{conform,lsp}.lua` to match your needs.
+Development plugins (LSP and code formatting) are split between different computers, allowing installation and configuration only for languages that are required on a specific computer, as my personal and my work needs may be different.
 
-In general, due to this bad design, I have plans to figure out a way to make these environment-configurable, which would relegate the default values in the repository root just enough to use as an example, but I have yet to free the time for it.
+The main configuration happens inside `nvim/lua/plugins/{conform,lsp}/init.lua`, which loads one of the nearby configuration based on the running computer's hostname, which allows it to be extensible and flexible.
+
+Neovim is configured to use GitHub Copilot using [Code Companion](https://github.com/olimorris/codecompanion.nvim) via [`copilot.lua`](https://github.com/olimorris/codecompanion.nvim). For this integration to work, you must have a GitHub account with an active subscription to Copilot, and authorize the plugin to use your subscription when first launching Neovim:
+
+```sh
+:Copilot auth
+```
 </details>
 
 <details>
 <summary>Starship</summary>
 
-This is not documented yet.
+Currently undocumented.
 
 TLDR: Configure your shell to use Starship
 </details>
@@ -57,7 +66,7 @@ TLDR: Configure your shell to use Starship
 <details>
 <summary>Tmux</summary>
 
-This is not documented yet.
+Currently undocumented.
 
 TLDR: Install Tmux Plugin Manager
 </details>
@@ -65,7 +74,13 @@ TLDR: Install Tmux Plugin Manager
 <details>
 <summary>ZSH</summary>
 
-My ZSH configuration uses the [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) theme, which needs to be manually installed before it can be used. Follow the installation instructions in the README file at the linked repository.
+The ZSH configuration uses [`oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh), which needs to be manually installed before it can be used. Follow the installation instructions in the README file at the linked repository. Once installed, the ZSH configuration can be symlinked for use on the system:
 
-Once installed, you can simply copy the `.zshrc` file from this repository to `~`, replacing the preset configuration created by oh-my-zsh if you had already created it.
+```sh
+ln -s ~/.config/.zshrc ~/.zshrc
+```
+
+Any plugins that are installed to be used together with `oh-my-zsh` should be cloned with the existing Git submodules in the repository, and should therefore work out of the box.
+
+In addition to `oh-my-zsh`, [`eza`](https://github.com/eza-community/eza) has been aliased as a replacement for the native `ls` command, and must be installed based on the install instructions from their README.
 </details>

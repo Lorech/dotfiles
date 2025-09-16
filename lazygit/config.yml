@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+gui:
+  tabWidth: 2
+  nerdFontsVersion: 3
+  skipAmendWarning: true
+  skipStashWarning: true
+  useHunkModeInStagingView: false
+update:
+  method: background
+disableStartupPopups: true

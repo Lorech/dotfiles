@@ -6,20 +6,23 @@
 
 # Repository
 !.gitignore
+!.gitmodules
 !README.md
 
 # Tools
 !.zshrc
 !/aerospace
 !/alacritty
+!/eza
 !/hypr
 /hypr/hyprpaper.conf
+!/lazygit
 !/nvim
 !/starship
 !/tmux
-/tmux/plugins
 !/waybar
 !/zed/**/*.json
+!zsh
 
 # Misc. files
 *.DS_Store

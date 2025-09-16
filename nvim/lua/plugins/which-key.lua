@@ -116,7 +116,7 @@ return {
     },
     -- Document existing key chains
     spec = {
-      { '<leader>a', group = 'AI', mode = { 'n', 'x' }, icon = { icon = ' ', color = 'blue' } },
+      { '<leader>a', group = 'Agent', mode = { 'n', 'x' }, icon = { icon = ' ', color = 'blue' } },
       { '<leader>c', group = 'Code', mode = { 'n', 'x' } },
       { '<leader>d', group = 'Document', icon = { icon = '', color = 'green' } },
       { '<leader>r', group = 'Rename', icon = { icon = '', color = 'white' } },
