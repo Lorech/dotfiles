@@ -44,8 +44,9 @@ if [[ "$HOST" == "Fractal" ]] then
   fi
 fi
 
-# Use the Eza theme configuration from this directory
+# Move configuration directories from defaults to this repository.
 export EZA_CONFIG_DIR="$DOTFILES/eza"
+export XDG_CONFIG_HOME="$DOTFILES/lazygit"
 
 # Use the Starship theme for ZSH
 export STARSHIP_CONFIG="$DOTFILES/starship/starship.toml"
