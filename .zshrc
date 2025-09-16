@@ -28,12 +28,6 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 source $ZSH/oh-my-zsh.sh
 
-### MARK: Custom Aliases
-
-alias "ls"="eza --icons"
-alias "ls -la"="eza -l -g --icons"
-alias "pip"="python3 -m pip"
-
 ### MARK: User Configuration
 
 # Preferred editor for local and remote sessions
@@ -56,3 +50,21 @@ export EZA_CONFIG_DIR="$DOTFILES/eza"
 # Use the Starship theme for ZSH
 export STARSHIP_CONFIG="$DOTFILES/starship/starship.toml"
 eval "$(starship init zsh)"
+
+### MARK: Custom Aliases
+
+alias "ls"="eza --icons"
+alias "ls -la"="eza -l -g --icons"
+alias "pip"="python3 -m pip"
+
+### MARK: Custom Paths
+
+# PNPM
+if [ -d "$HOME/Library/pnpm" ]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+fi
+
