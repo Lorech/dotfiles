@@ -45,8 +45,8 @@ if [[ "$HOST" == "Fractal" ]] then
 fi
 
 # Move configuration directories from defaults to this repository.
+export XDG_CONFIG_HOME="$DOTFILES"
 export EZA_CONFIG_DIR="$DOTFILES/eza"
-export XDG_CONFIG_HOME="$DOTFILES/lazygit"
 
 # Use the Starship theme for ZSH
 export STARSHIP_CONFIG="$DOTFILES/starship/starship.toml"
