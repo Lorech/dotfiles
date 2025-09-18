@@ -5,6 +5,7 @@ gui:
   skipAmendWarning: true
   skipStashWarning: true
   useHunkModeInStagingView: false
+  switchTabsWithPanelJumpKeys: true
 update:
   method: background
 disableStartupPopups: true
