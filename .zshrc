@@ -60,6 +60,13 @@ alias "pip"="python3 -m pip"
 
 ### MARK: Custom Paths
 
+# NVM for Node management
+if [ -d "$HOME/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+fi
+
 # PNPM
 if [ -d "$HOME/Library/pnpm" ]; then
   export PNPM_HOME="$HOME/Library/pnpm"
@@ -68,4 +75,3 @@ if [ -d "$HOME/Library/pnpm" ]; then
     *) export PATH="$PNPM_HOME:$PATH" ;;
   esac
 fi
-
