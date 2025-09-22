@@ -36,6 +36,8 @@ recents = "--sort created- --created-after 'last two weeks'"
 journal = "--sort created journal"
 
 [alias]
+# Edit the ZK configuration
+config = '$EDITOR "$ZK_NOTEBOOK_DIR/.zk/config.toml"'
 # Edit last modified note
 last = "zk edit --limit 1 --sort modified- $@"
 # List most recently modified notes within a 2 week span
