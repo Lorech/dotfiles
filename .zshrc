@@ -57,6 +57,23 @@ eval "$(starship init zsh)"
 alias "ls"="eza --icons"
 alias "ls -la"="eza -l -g --icons"
 alias "pip"="python3 -m pip"
+alias "gct"="git_commit_timestamp"
+
+### MARK: Custom Functions
+
+# Autocommits all staged files with a timestamp as the commit message.
+# Passing `push` as an argument to the function also pushes it upstream.
+git_commit_timestamp() {
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    git add -A
+    git commit -m "$(date '+%Y-%m-%d %H:%M:%S')"
+    if [[ $1 == "push" ]]; then
+      git push
+    fi
+  else
+    echo "Not inside a git repository."
+  fi
+}
 
 ### MARK: Custom Paths
 
