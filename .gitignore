@@ -19,6 +19,7 @@
 !/starship
 !/tmux
 !/zed/**/*.json
+!zk
 !zsh
 
 # Misc. files
