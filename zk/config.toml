@@ -21,6 +21,13 @@ paths = ["journal"]
 filename = "{{format-date now}}"
 template = "journal.md"
 
+[group.resolutions]
+paths = ["resolutions"]
+
+[group.resolutions.note]
+filename = "{{format-date now \"year\"}}"
+template = "new-year.md"
+
 [format.markdown]
 hashtags = true
 colon-tags = true
@@ -32,8 +39,9 @@ pager = "less -FIRX"
 fzf-preview = "bat -p --color always {-1}"
 
 [filter]
-recents = "--sort created- --created-after 'last two weeks'"
 journal = "--sort created journal"
+recents = "--sort created- --created-after 'last two weeks'"
+resolutions = "--sort created resolutions"
 
 [alias]
 # Edit the ZK configuration
@@ -44,6 +52,8 @@ last = "zk edit --limit 1 --sort modified- $@"
 recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
 # Create or edit today's daily journal entry
 daily = "zk new --no-input \"$ZK_NOTEBOOK_DIR/journal\""
+# Create or edit this year's resolution root note
+yearly = "zk new --no-input \"$ZK_NOTEBOOK_DIR/resolutions\""
 
 [lsp]
 
