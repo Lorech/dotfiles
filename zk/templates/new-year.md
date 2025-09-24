@@ -1,5 +1,5 @@
 ---
-title: {{format-date now "year"}}
+title: {{format-date now "year"}} New Year's Resolutions
 tags: [root, {{format-date now "year"}}]
 ---
 
