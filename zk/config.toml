@@ -14,6 +14,9 @@ id-case = "lower"
 [extra]
 author = "Lorech"
 
+[group.gear]
+paths = ["gear"]
+
 [group.journal]
 paths = ["journal"]
 
@@ -39,6 +42,7 @@ pager = "less -FIRX"
 fzf-preview = "bat -p --color always {-1}"
 
 [filter]
+gear = "--sort created gear"
 journal = "--sort created journal"
 recents = "--sort created- --created-after 'last two weeks'"
 resolutions = "--sort created resolutions"
