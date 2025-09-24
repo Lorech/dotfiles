@@ -14,6 +14,13 @@ id-case = "lower"
 [extra]
 author = "Lorech"
 
+[group.blog]
+paths = ["blog"]
+
+[group.blog.note]
+filename = "{{slug title}}"
+template = "blog.md"
+
 [group.gear]
 paths = ["gear"]
 
@@ -42,6 +49,7 @@ pager = "less -FIRX"
 fzf-preview = "bat -p --color always {-1}"
 
 [filter]
+blog = "--sort created blog"
 gear = "--sort created gear"
 journal = "--sort created journal"
 recents = "--sort created- --created-after 'last two weeks'"
@@ -54,6 +62,8 @@ config = '$EDITOR "$ZK_NOTEBOOK_DIR/.zk/config.toml"'
 last = "zk edit --limit 1 --sort modified- $@"
 # List most recently modified notes within a 2 week span
 recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
+# Create a new blog post
+blog = "zk new \"$ZK_NOTEBOOK_DIR/blog\""
 # Create or edit today's daily journal entry
 daily = "zk new --no-input \"$ZK_NOTEBOOK_DIR/journal\""
 # Create or edit this year's resolution root note
