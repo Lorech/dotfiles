@@ -13,6 +13,8 @@
 !.zshrc
 !/aerospace
 !/alacritty
+!/clipse/config.json
+!/clipse/custom_theme.json
 !/eza
 !/fuzzel
 !/hypr
@@ -22,7 +24,9 @@
 !/starship
 !/tmux
 !/waybar
-!/zed/**/*.json
+!/zed
+zed/*
+!/zed/config.json
 !zk
 !zsh
 
