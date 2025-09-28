@@ -44,6 +44,7 @@ require('lazy').setup({
   require 'plugins.trouble',
   require 'plugins.which-key',
   require 'plugins.yanky',
+  require 'plugins.zk',
 }, {
   ui = {
     -- Use icons for UI if a Nerd Font is enabled in Vim, falling back to an empty field otherwise.

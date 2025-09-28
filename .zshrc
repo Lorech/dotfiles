@@ -45,8 +45,8 @@ if [[ "$HOST" == "Fractal" ]] then
 fi
 
 # Move configuration directories from defaults to this repository.
+export XDG_CONFIG_HOME="$DOTFILES"
 export EZA_CONFIG_DIR="$DOTFILES/eza"
-export XDG_CONFIG_HOME="$DOTFILES/lazygit"
 
 # Use the Starship theme for ZSH
 export STARSHIP_CONFIG="$DOTFILES/starship/starship.toml"
@@ -57,8 +57,32 @@ eval "$(starship init zsh)"
 alias "ls"="eza --icons"
 alias "ls -la"="eza -l -g --icons"
 alias "pip"="python3 -m pip"
+alias "gct"="git_commit_timestamp"
+
+### MARK: Custom Functions
+
+# Autocommits all staged files with a timestamp as the commit message.
+# Passing `push` as an argument to the function also pushes it upstream.
+git_commit_timestamp() {
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    git add -A
+    git commit -m "$(date '+%Y-%m-%d %H:%M:%S')"
+    if [[ $1 == "push" ]]; then
+      git push
+    fi
+  else
+    echo "Not inside a git repository."
+  fi
+}
 
 ### MARK: Custom Paths
+
+# NVM for Node management
+if [ -d "$HOME/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+fi
 
 # PNPM
 if [ -d "$HOME/Library/pnpm" ]; then

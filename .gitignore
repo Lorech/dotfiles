@@ -22,6 +22,7 @@
 !/tmux
 !/waybar
 !/zed/**/*.json
+!zk
 !zsh
 
 # Misc. files

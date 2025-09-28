@@ -1,0 +1,76 @@
+[notebook]
+dir = "~/zettels"
+
+[note]
+language = "en"
+filename = "{{id}}-{{slug title}}"
+extension = "md"
+default-title = "Untitled"
+template = "default.md"
+id-charset = "alphanum"
+id-length = 4
+id-case = "lower"
+
+[extra]
+author = "Lorech"
+
+[group.blog]
+paths = ["blog"]
+
+[group.blog.note]
+filename = "{{slug title}}"
+template = "blog.md"
+
+[group.gear]
+paths = ["gear"]
+
+[group.journal]
+paths = ["journal"]
+
+[group.journal.note]
+filename = "{{format-date now}}"
+template = "journal.md"
+
+[group.resolutions]
+paths = ["resolutions"]
+
+[group.resolutions.note]
+filename = "{{format-date now \"year\"}}"
+template = "new-year.md"
+
+[format.markdown]
+hashtags = true
+colon-tags = true
+
+[tool]
+editor = "nvim"
+shell = "/bin/zsh"
+pager = "less -FIRX"
+fzf-preview = "bat -p --color always {-1}"
+
+[filter]
+blog = "--sort created blog"
+gear = "--sort created gear"
+journal = "--sort created journal"
+recents = "--sort created- --created-after 'last two weeks'"
+resolutions = "--sort created resolutions"
+
+[alias]
+# Edit the ZK configuration
+config = '$EDITOR "$ZK_NOTEBOOK_DIR/.zk/config.toml"'
+# Edit last modified note
+last = "zk edit --limit 1 --sort modified- $@"
+# List most recently modified notes within a 2 week span
+recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
+# Create a new blog post
+blog = "zk new \"$ZK_NOTEBOOK_DIR/blog\""
+# Create or edit today's daily journal entry
+daily = "zk new --no-input \"$ZK_NOTEBOOK_DIR/journal\""
+# Create or edit this year's resolution root note
+yearly = "zk new --no-input \"$ZK_NOTEBOOK_DIR/resolutions\""
+
+[lsp]
+
+[lsp.diagnostics]
+wiki-title = "hint"
+dead-link = "error"
