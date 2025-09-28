@@ -1,6 +1,6 @@
 # dotfiles
 
-My personal configurations for various tools and configurable software I use on a daily basis on macOS systems.
+My personal configurations for various tools and configurable software I use on a daily basis. Compatible (with some differences) with both macOS and Linux.
 
 ## Setup
 
@@ -15,6 +15,31 @@ git clone git@github.com:Lorech/dotfiles.git ~/.config --recurse-submodules
 
 2. Install the respective tooling for your operating system
 3. For some tools, additional action is required - see below for any tool you plan to use
+
+<details>
+<summary>GTK</summary>
+
+From what I could tell, GTK 3 and GTK 4 could not be configured via settings file - theming only worked through terminal commands, which is why I didn't include GTK in the installer list, as this is fully manual and totally optional.
+
+To ensure a consistent style across the entire OS, I use a GTK theme which can provide a Catppuccin theme, as it is the most universal across the largest amount of applications I use - [Colloid](https://github.com/vinceliuice/Colloid-gtk-theme), along with its' respective [Colloid Icons](https://github.com/vinceliuice/Colloid-icon-theme).
+
+To set these up, you must clone the repositories locally, and run the following commands to match my setup:
+
+```sh
+colloid-gtk/install.sh -t purple -c dark --tweaks catppuccin normal
+colloid-icons/install.sh -s catppuccin -t purple./install.sh -s catppuccin -t purple./install.sh -s catppuccin -t purple
+gsettings set org.gnome.desktop.interface gtk-theme Colloid-Purple-Dark-Catppuccin
+gsettings set org.gnome.desktop.interface icon-theme Colloid-Purple-Catppuccin-Dark
+```
+</details>
+
+<details>
+<summary>Hyprpaper</summary>
+
+Due to copyright risk, I do not store any wallpapers in this repository, so I also don't think it's appropriate to store wallpaper configuration here as well. For this reason, the Hyprpaper configuration only contains a template file for setting up.
+
+You can copy this file naming it `hyprpaper.conf` (this file is ignored from VCS) and fill in the templated fields to make Hyprpaper functional.
+</details>
 
 <details>
 <summary>Neovim</summary>
@@ -59,4 +84,3 @@ Any plugins that are installed to be used together with `oh-my-zsh` should be cl
 
 In addition to `oh-my-zsh`, [`eza`](https://github.com/eza-community/eza) has been aliased as a replacement for the native `ls` command, and must be installed based on the install instructions from their README.
 </details>
-

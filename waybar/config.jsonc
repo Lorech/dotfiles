@@ -1,0 +1,149 @@
+// -*- mode: jsonc -*-
+{
+    "height": 32,
+    "margin-top": 8,
+    "margin-bottom": 0, // Let Hyprland decide how large this gap is.
+    "margin-left": 8,
+    "margin-right": 8,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "custom/power",
+        "cpu",
+        "memory",
+        "custom/media"
+    ],
+    "modules-center": [
+        "hyprland/workspaces",
+        "hyprland/submap",
+    ],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "network",
+        "power-profiles-daemon",
+        "keyboard-state",
+        "hyprland/language",
+        "battery",
+        "clock",
+        "custom/notification"
+    ],
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%A, %d %B %I:%M %p}",
+        "format-alt": "{:%r}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true
+    },
+    "keyboard-state": {
+        "capslock": true,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": " ",
+            "unlocked": ""
+        }
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "EN",
+        "format-lv": "LV"
+    },
+    "memory": {
+        "format": "  {}%"
+    },
+    "network": {
+        "format-disconnected": "⚠ ",
+        "format-linked": "󰅛 ",
+        "format-ethernet": "<span font=\"13\">󰈀 </span>",
+        "format-wifi": " ",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": " ",
+        "performance": "󰓅 ",
+        "balanced": " ",
+        "power-saver": " "
+      }
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "0%  ",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "0%   {icon} {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "default": ["", " ", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "custom/media": {
+        "format": "{icon} {0}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "<span font=\"14\" rise=\"-1500\"> </span>",
+            "default": "<span font=\"13\" rise=\"-1500\">🎜 </span>"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/modules/media_player.py 2> /dev/null"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+          "none": "󰂜 ",
+          "notification": "󰂚 ",
+          "dnd-none": "󰪑 ",
+          "dnd-notification": "󰂛 ",
+          "inhibited-none": "󰂟 ",
+          "inhibited-notification": "󰂞 ",
+          "dnd-inhibited-none": "󰪑 ",
+          "dnd-inhibited-notification": "󰂛 "
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/power": {
+        "format" : "󰣇 ",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/modules/power_menu.xml",
+        "menu-actions": {
+            "lock": "loginctl lock-session",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate",
+            "shutdown": "systemctl poweroff",
+            "reboot": "reboot"
+        }
+    },
+}

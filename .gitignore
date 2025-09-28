@@ -14,10 +14,13 @@
 !/aerospace
 !/alacritty
 !/eza
+!/hypr
+/hypr/hyprpaper.conf
 !/lazygit
 !/nvim
 !/starship
 !/tmux
+!/waybar
 !/zed/**/*.json
 !zk
 !zsh
