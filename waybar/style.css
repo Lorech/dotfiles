@@ -22,10 +22,12 @@ button:hover {
 /*** MARK: Bars ***/
 
 window#waybar {
-    background-color: rgba(60, 60, 60, 0.75);
+    background-color: rgba(35, 33, 54, 0.75);
+    color: #e0def4;
     font-weight: bold;
-    border-radius: 16px;
-    border: 1px solid black;
+    border-width: 2px;
+    border-color: #f773eb;
+    border-radius: 10px;
 }
 
 window#waybar.hidden {
