@@ -13,8 +13,10 @@
 !.zshrc
 !/aerospace
 !/alacritty
+!/clipse
+/clipse/*
 !/clipse/config.json
-!/clipse/custom_theme.json
+!/clipse/theme.json
 !/eza
 !/fuzzel
 !/hypr
