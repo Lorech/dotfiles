@@ -24,6 +24,9 @@ template = "blog.md"
 [group.gear]
 paths = ["gear"]
 
+[group.gear.note]
+filename = "{{slug title}}"
+
 [group.journal]
 paths = ["journal"]
 
