@@ -25,6 +25,7 @@
         "hyprland/language",
         "battery",
         "clock",
+        "idle_inhibitor",
         "custom/notification"
     ],
     "battery": {
@@ -48,6 +49,13 @@
     "cpu": {
         "format": "  {usage}%",
         "tooltip": true
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
     "keyboard-state": {
         "capslock": true,

@@ -46,6 +46,7 @@ window#waybar .horizontal {
 #battery,
 #clock,
 #cpu,
+#idle_inhibitor,
 #keyboard-state,
 #language,
 #memory,
@@ -64,6 +65,11 @@ window#waybar .horizontal {
 #custom-power {
     font-size: 22px;
     padding-right: 2px;
+}
+
+#idle_inhibitor {
+    padding-left: 4px;
+    padding-right: 20px;
 }
 
 #cpu {
