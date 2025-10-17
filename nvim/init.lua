@@ -34,7 +34,6 @@ require('lazy').setup({
   require 'plugins.lsp',
   require 'plugins.mini',
   require 'plugins.neotree',
-  require 'plugins.noice',
   require 'plugins.render-markdown',
   require 'plugins.sleuth',
   require 'plugins.tailwind',
