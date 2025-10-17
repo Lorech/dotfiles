@@ -24,6 +24,9 @@ template = "blog.md"
 [group.gear]
 paths = ["gear"]
 
+[group.gear.note]
+filename = "{{slug title}}"
+
 [group.journal]
 paths = ["journal"]
 
@@ -36,7 +39,14 @@ paths = ["resolutions"]
 
 [group.resolutions.note]
 filename = "{{format-date now \"year\"}}"
-template = "new-year.md"
+template = "resolutions.md"
+
+[group.resolution]
+paths = ["resolutions/updates"]
+
+[group.resolution.note]
+filename = "{{format-date now \"year\"}}-{{slug title}}"
+template = "resolution-update.md"
 
 [format.markdown]
 hashtags = true
@@ -53,7 +63,6 @@ blog = "--sort created blog"
 gear = "--sort created gear"
 journal = "--sort created journal"
 recents = "--sort created- --created-after 'last two weeks'"
-resolutions = "--sort created resolutions"
 
 [alias]
 # Edit the ZK configuration
@@ -68,6 +77,8 @@ blog = "zk new \"$ZK_NOTEBOOK_DIR/blog\""
 daily = "zk new --no-input \"$ZK_NOTEBOOK_DIR/journal\""
 # Create or edit this year's resolution root note
 yearly = "zk new --no-input \"$ZK_NOTEBOOK_DIR/resolutions\""
+# List all individual resolution update notes for editing
+resolution = "zk edit --sort created --interactive \"$ZK_NOTEBOOK_DIR/resolutions/updates\""
 
 [lsp]
 
