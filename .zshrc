@@ -54,8 +54,6 @@ eval "$(starship init zsh)"
 
 ### MARK: Custom Aliases
 
-alias "ls"="eza --icons"
-alias "ls -la"="eza -l -g --icons"
 alias "pip"="python3 -m pip"
 alias "gct"="git_commit_timestamp"
 
