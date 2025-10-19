@@ -1,4 +1,6 @@
 -- [[ Configuration ]]
+-- Must be required first and in this specific order to avoid
+-- issues when plugins start being loaded later on in this file.
 require 'globals'
 require 'options'
 require 'keymaps'
@@ -34,7 +36,6 @@ require('lazy').setup({
   require 'plugins.mini',
   require 'plugins.neotree',
   require 'plugins.render-markdown',
-  require 'plugins.tailwind',
   require 'plugins.telescope',
   require 'plugins.tmux-navigator',
   require 'plugins.treesitter',
@@ -43,7 +44,8 @@ require('lazy').setup({
   require 'plugins.zk',
 }, {
   ui = {
-    -- Use icons for UI if a Nerd Font is enabled in Vim, falling back to an empty field otherwise.
+    -- Use emojis for UI if Nerd Fonts are disabled. Providing an empty
+    -- table will allow lazy.nvim to use it's built-in icons instead.
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',
