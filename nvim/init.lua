@@ -22,13 +22,10 @@ vim.opt.rtp:prepend(lazypath)
 --  See `:Lazy`
 require('lazy').setup({
   require 'plugins.autopairs',
-  require 'plugins.cheatsheet',
-  require 'plugins.codecompanion',
   require 'plugins.colorschemes',
   require 'plugins.comments',
   require 'plugins.completions',
   require 'plugins.conform',
-  require 'plugins.copilot',
   require 'plugins.gitsigns',
   require 'plugins.guess-indent',
   require 'plugins.indent-guide',
