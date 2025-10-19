@@ -1,4 +1,4 @@
--- Provides cleaner rendering of Markdown files via Nerd fonts.
+-- Provides cleaner rendering of Markdown files
 return {
   'MeanderingProgrammer/render-markdown.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },

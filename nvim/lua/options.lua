@@ -2,13 +2,13 @@
 --  See `:help vim.opt`
 
 -- Configure line numbers
-vim.opt.number = true -- Enable line numbers
-vim.opt.relativenumber = true -- Show other lines as relatives
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.opt.mouse = 'a'
 
--- Defer mode display to Lualine
+-- Defer mode display to the status line
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim
