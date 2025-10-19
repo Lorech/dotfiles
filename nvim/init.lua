@@ -41,7 +41,6 @@ require('lazy').setup({
   require 'plugins.tmux-navigator',
   require 'plugins.treesitter',
   require 'plugins.trouble',
-  require 'plugins.which-key',
   require 'plugins.yanky',
   require 'plugins.zk',
 }, {
