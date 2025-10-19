@@ -1,4 +1,4 @@
--- Add configurable indentation guides.
+-- Add configurable indentation guides
 return {
   {
     'lukas-reineke/indent-blankline.nvim',

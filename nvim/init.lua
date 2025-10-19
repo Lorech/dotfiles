@@ -29,7 +29,7 @@ require('lazy').setup({
   require 'plugins.copilot',
   require 'plugins.gitsigns',
   require 'plugins.guess-indent',
-  require 'plugins.indents',
+  require 'plugins.indent-guide',
   require 'plugins.lsp',
   require 'plugins.mini',
   require 'plugins.neotree',
