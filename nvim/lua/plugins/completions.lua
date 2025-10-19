@@ -44,18 +44,18 @@ return {
       -- ['<Down>'] = { 'select_next', 'fallback' },
       -- ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
       -- ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
-      -- -- Completion; uses the snippet under the cursor, or the first one otherwise.
-      -- ['<Tab>'] = {
-      --   function(cmp)
-      --     if cmp.snippet_active() then
-      --       return cmp.accept()
-      --     else
-      --       return cmp.select_and_accept()
-      --     end
-      --   end,
-      --   'snippet_forward',
-      --   'fallback',
-      -- },
+      -- Completion; uses the snippet under the cursor, or the first one otherwise.
+      ['<Tab>'] = {
+        function(cmp)
+          if cmp.snippet_active() then
+            return cmp.accept()
+          else
+            return cmp.select_and_accept()
+          end
+        end,
+        'snippet_forward',
+        'fallback',
+      },
     },
     completion = {
       list = {
