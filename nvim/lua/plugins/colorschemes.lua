@@ -8,16 +8,12 @@
 -- See `:Telescope colorscheme` to preview the themes
 return {
   {
-    'rose-pine/neovim',
+    'zenbones-theme/zenbones.nvim',
     priority = 1000,
     lazy = false,
+    dependencies = 'rktjmp/lush.nvim',
     config = function()
-      require('rose-pine').setup {
-        styles = {
-          transparency = true,
-        },
-      }
-      vim.cmd.colorscheme 'rose-pine'
+      vim.cmd.colorscheme 'rosebones'
     end,
   },
 }
