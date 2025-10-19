@@ -1,4 +1,4 @@
--- Add git-related symbols to the gutter, as well as utilities and keymaps for managing changes
+-- Visual and keymap utilities for working with Git
 --  See `:help gitsigns`
 return {
   'lewis6991/gitsigns.nvim',
@@ -32,45 +32,40 @@ return {
       end
 
       -- [[ Navigation ]]
-      map('n', ']c', function()
+      map('n', ']h', function()
         if vim.wo.diff then
-          vim.cmd.normal { ']c', bang = true }
+          vim.cmd.normal { ']h', bang = true }
         else
           gitsigns.nav_hunk 'next'
         end
-      end, 'jump to next Hunk')
-
-      map('n', '[c', function()
+      end, 'jump to next hunk')
+      map('n', '[h', function()
         if vim.wo.diff then
-          vim.cmd.normal { '[c', bang = true }
+          vim.cmd.normal { '[h', bang = true }
         else
           gitsigns.nav_hunk 'prev'
         end
-      end, 'jump to previous Hunk')
+      end, 'jump to previous hunk')
 
       -- [[ Actions ]]
-      -- [[ Visual ]]
-      map('v', '<leader>hs', function()
+      map('v', '<leader>gs', function()
         gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      end, 'Hunk Stage')
-      map('v', '<leader>hr', function()
+      end, 'Stage hunk')
+      map('v', '<leader>gr', function()
         gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      end, 'Hunk Reset')
-      -- [[ Normal ]]
-      map('n', '<leader>hs', gitsigns.stage_hunk, 'Hunk Stage')
-      map('n', '<leader>hr', gitsigns.reset_hunk, 'Hunk Reset')
-      map('n', '<leader>hS', gitsigns.stage_buffer, 'Hunk Stage buffer')
-      map('n', '<leader>hu', gitsigns.undo_stage_hunk, 'Hunk Undo stage')
-      map('n', '<leader>hR', gitsigns.reset_buffer, 'Hunk Reset stage')
-      map('n', '<leader>hp', gitsigns.preview_hunk, 'Hunk Preview')
-      map('n', '<leader>hb', gitsigns.blame_line, 'Hunk Blame line')
-      map('n', '<leader>hd', gitsigns.diffthis, 'Hunk Diff index')
-      map('n', '<leader>hD', function()
+      end, 'Reset hunk')
+      map('n', '<leader>gs', gitsigns.stage_hunk, 'Stage hunk')
+      map('n', '<leader>gr', gitsigns.reset_hunk, 'Reset hunk')
+      map('n', '<leader>gS', gitsigns.stage_buffer, 'Stage buffer')
+      map('n', '<leader>gR', gitsigns.reset_buffer, 'Reset buffer')
+      map('n', '<leader>gp', gitsigns.preview_hunk, 'Preview hunk')
+      map('n', '<leader>gi', gitsigns.preview_hunk_inline, 'Inline preview hunk')
+      map('n', '<leader>gb', gitsigns.blame_line, 'Blame line')
+      map('n', '<leader>gd', gitsigns.diffthis, 'Diff index')
+      map('n', '<leader>gD', function()
         gitsigns.diffthis '@'
-      end, 'Hunk Diff last commit')
-      -- [[ Toggles ]]
-      map('n', '<leader>tb', gitsigns.toggle_current_line_blame, 'Toggle show blame line')
-      map('n', '<leader>tD', gitsigns.toggle_deleted, 'Toggle show Deleted')
+      end, 'Diff commit')
+      map('n', '<leader>tb', gitsigns.toggle_current_line_blame, 'Toggle line blame')
     end,
   },
 }
