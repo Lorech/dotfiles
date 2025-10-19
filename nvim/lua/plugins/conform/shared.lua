@@ -1,7 +1,8 @@
--- Formatter configuration shared across all devices.
--- For the most part, only Lua is expected to be here, as it is required to
--- even use Neovim, but, if a pattern of using certain formatters on all devices
--- emerges (e.g., web dev stuff), then this could be updated to include them.
+-- Formatter configuration shared across all of my devices.
+--
+-- For the most part, I only expect Lua to be required, as it's needed to
+-- configure Neovim, but, if a pattern of using certain LSPs on all devices
+-- emerges, this would be the place to abstract all of them into.
 return {
   lua = { 'stylua' },
 }

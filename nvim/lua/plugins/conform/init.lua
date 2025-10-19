@@ -1,4 +1,4 @@
--- Auto-formatter based on file type
+-- Support for file formatting
 --  See `help: conform`
 return {
   'stevearc/conform.nvim',
@@ -11,28 +11,30 @@ return {
         require('conform').format { async = true, lsp_format = 'fallback' }
       end,
       mode = '',
-      desc = 'Conform: Code Format',
+      desc = 'Conform: Code format',
     },
   },
   opts = {
     notify_on_error = false,
-    format_after_save = function(bufnr)
-      -- Disable "format_on_save lsp_fallback" for languages that don't have a  standardized coding style.
-      local disable_filetypes = { c = true, cpp = true }
-      local lsp_format_opt
+    format_on_save = function(bufnr)
+      -- Disable automatic formatting for certain languages
+      local disable_filetypes = {}
       if disable_filetypes[vim.bo[bufnr].filetype] then
-        lsp_format_opt = 'never'
+        return nil
       else
-        lsp_format_opt = 'fallback'
+        return {
+          timeout_ms = 500,
+          lsp_format = 'fallback',
+        }
       end
-      return {
-        timeout_ms = 500,
-        lsp_format = lsp_format_opt,
-      }
     end,
     formatters_by_ft = (function()
+      -- Enabled file type formatters, which are set on a per-device basis
+      --
+      -- To add a new device to the list, create a new configuration derived
+      -- from its hostname below. Each new configuration should extend from the
+      -- `shared` configuration, ensuring some consistency between devices.
       local hostname = vim.loop.os_gethostname()
-
       if hostname == 'Lauriss-MacBook-Pro-2.local' then
         return require 'plugins.conform.work'
       elseif hostname == 'Lauriss-MacBook-Pro.local' then
