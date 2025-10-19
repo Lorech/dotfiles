@@ -19,12 +19,10 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Plugins ]]
 --  See `:Lazy`
 require('lazy').setup({
-  -- Configurations that depend on plugins
-  require 'colorschemes',
-  -- Standalone plugins
   require 'plugins.autopairs',
   require 'plugins.cheatsheet',
   require 'plugins.codecompanion',
+  require 'plugins.colorschemes',
   require 'plugins.comments',
   require 'plugins.completions',
   require 'plugins.conform',
