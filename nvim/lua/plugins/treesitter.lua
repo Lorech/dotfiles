@@ -9,10 +9,10 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     opts = {
-      -- Languages that treesitter should be configured to recognize for highlighting
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
-      -- Auto-install treesitter configurations for any missing languages when opening a buffer
+      -- Ensure certain languages to be auto-configured for TreeSitter. Ones
+      -- not included in this list will only be installed when a file is open.
       auto_install = true,
+      ensure_installed = { 'bash', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
       highlight = {
         enable = true,
         -- Some languages depend on Vim's RegEx highlighting system (such as Ruby) for indent rules.
@@ -21,8 +21,5 @@ return {
       },
       indent = { enable = true, disable = { 'ruby' } },
     },
-  },
-  {
-    'windwp/nvim-ts-autotag',
   },
 }
