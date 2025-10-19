@@ -1,4 +1,4 @@
 -- Detect `tabstop` and `shiftwidth` based on file type
 return {
-  'tpope/vim-sleuth',
+  'NMAC427/guess-indent.nvim',
 }
