@@ -1,13 +1,12 @@
--- Fuzzy-finder for files, text, LSPs, git, and other things.
+-- Fuzzy-finder for files, text, and a lot more
 --  See `:help telescope`
 --
 -- System dependencies:
---  - Ripgrep (https://github.com/BurntSushi/ripgrep)
---  - FD (https://github.com/sharkdp/fd)
+--  - ripgrep (https://github.com/BurntSushi/ripgrep)
+--  - fd (https://github.com/sharkdp/fd)
 return {
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
-  branch = '0.1.x',
   dependencies = {
     { 'nvim-lua/plenary.nvim' },
     {
@@ -18,9 +17,7 @@ return {
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
-    -- Enable icons if a Nerd Font is enabled in Neovim
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-    -- Additional plugins to find more things in Telescope
   },
   config = function()
     require('telescope').setup {
@@ -42,33 +39,30 @@ return {
 
     -- Configure Telescope-specific keymaps
     local builtin = require 'telescope.builtin'
-    map('n', '<leader>fh', builtin.help_tags, 'Find Help')
-    map('n', '<leader>fk', builtin.keymaps, 'Find Keymaps')
-    map('n', '<leader>ff', builtin.find_files, 'Find Files')
-    map('n', '<leader>fw', builtin.grep_string, 'Find current Word')
-    map('n', '<leader>fg', builtin.live_grep, 'Find by Grep')
-    map('n', '<leader>fd', builtin.diagnostics, 'Find Diagnostics')
-    map('n', '<leader>fr', builtin.resume, 'Find Resume')
-    map('n', '<leader>f.', builtin.oldfiles, 'Find recent files ("." for repeat)')
+    map('n', '<leader>fh', builtin.help_tags, 'Find help')
+    map('n', '<leader>fk', builtin.keymaps, 'Find keymaps')
+    map('n', '<leader>ff', builtin.find_files, 'Find files')
+    map('n', '<leader>fw', builtin.grep_string, 'Find current word')
+    map('n', '<leader>fg', builtin.live_grep, 'Find by grep')
+    map('n', '<leader>fd', builtin.diagnostics, 'Find diagnostics')
+    map('n', '<leader>fr', builtin.resume, 'Find resume')
+    map('n', '<leader>f.', builtin.oldfiles, 'Find recent files')
     map('n', '<leader><leader>', function()
       builtin.buffers { ignore_current_buffer = true, sort_lastused = true }
-    end, 'find existing buffers')
-
+    end, 'find buffers')
     map('n', '<leader>/', function()
-      -- There is no need for such a large UI when searching through the current file, as we already are familiar with it.
+      -- Decrease UI size since the current buffer is already familiar.
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 10,
         previewer = false,
       })
-    end, 'Fuzzy search in current buffer')
-
+    end, 'Search current buffer')
     map('n', '<leader>f/', function()
       builtin.live_grep {
         grep_open_files = true,
         prompt_title = 'Live Grep in Open Files',
       }
-    end, 'Find by grep in open files')
-
+    end, 'Grep open buffers')
     map('n', '<leader>fn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, 'Find Neovim files')
