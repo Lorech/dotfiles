@@ -13,8 +13,8 @@ My personal configurations for various tools and configurable software I use on 
 git clone git@github.com:Lorech/dotfiles.git ~/.config --recurse-submodules
 ```
 
-2. Install the respective tooling for your operating system
-3. For some tools, additional action is required - see below for any tool you plan to use
+2. Install desired tools for your operating system
+3. Review the below summaries for any additional setup work or system dependencies required for a fully functional setup
 
 <details>
 <summary>GTK</summary>
@@ -43,6 +43,11 @@ You can copy this file naming it `hyprpaper.conf` (this file is ignored from VCS
 
 <details>
 <summary>Neovim</summary>
+
+For a fully functional configuration, the following system dependencies are required:
+
+- ripgrep (https://github.com/BurntSushi/ripgrep)
+- fd (https://github.com/sharkdp/fd)
 
 Development plugins (LSP and code formatting) are split between different computers, allowing installation and configuration only for languages that are required on a specific computer, as my personal and my work needs may be different.
 
