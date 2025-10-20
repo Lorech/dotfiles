@@ -17,10 +17,13 @@ return {
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
+    { 'nvim-telescope/telescope-file-browser.nvim' },
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   config = function()
-    require('telescope').setup {
+    local telescope = require 'telescope'
+
+    telescope.setup {
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
@@ -29,8 +32,9 @@ return {
     }
 
     -- Enable Telescope extensions if they are installed
-    pcall(require('telescope').load_extension, 'fzf')
-    pcall(require('telescope').load_extension, 'ui-select')
+    pcall(telescope.load_extension, 'fzf')
+    pcall(telescope.load_extension, 'ui-select')
+    pcall(telescope.load_extension, 'file_browser')
 
     -- Utility function for creating keymaps
     local function map(mode, l, r, desc)
@@ -42,6 +46,8 @@ return {
     map('n', '<leader>fh', builtin.help_tags, 'Find help')
     map('n', '<leader>fk', builtin.keymaps, 'Find keymaps')
     map('n', '<leader>ff', builtin.find_files, 'Find files')
+    map('n', '<leader>fb', ':Telescope file_browser<CR>', 'Find by file browser')
+    map('n', '<leader>fB', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', 'Find by file browser relative to buffer')
     map('n', '<leader>fw', builtin.grep_string, 'Find current word')
     map('n', '<leader>fg', builtin.live_grep, 'Find by grep')
     map('n', '<leader>fd', builtin.diagnostics, 'Find diagnostics')
