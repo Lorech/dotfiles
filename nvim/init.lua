@@ -60,3 +60,8 @@ require('lazy').setup({
     },
   },
 })
+
+-- Must be done here to allow `plugins.colorschemes` to download multiple schemes
+-- at the same time, while also keeping a single, centralized location at which
+-- a colorscheme actually gets set within Neovim.
+vim.cmd.colorscheme 'alabaster'
