@@ -24,6 +24,12 @@ return {
     local telescope = require 'telescope'
 
     telescope.setup {
+      pickers = {
+        find_files = {
+          -- Include all hidden files, except for the `.git` directory
+          find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
+        },
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
