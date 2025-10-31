@@ -83,8 +83,15 @@ if [ -d "$HOME/.nvm" ]; then
 fi
 
 # PNPM
+pnpm_installed=false
 if [ -d "$HOME/Library/pnpm" ]; then
   export PNPM_HOME="$HOME/Library/pnpm"
+  pnpm_installed=true
+elif [ -d "$HOME/.local/share/pnpm" ]; then
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+  pnpm_installed=true
+fi;
+if [ "$pnpm_installed" = true ]; then
   case ":$PATH:" in
     *":$PNPM_HOME:"*) ;;
     *) export PATH="$PNPM_HOME:$PATH" ;;
