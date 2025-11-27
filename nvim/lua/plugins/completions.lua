@@ -35,15 +35,6 @@ return {
   opts = {
     keymap = {
       preset = 'default',
-      -- -- Documentation
-      -- ['<C-e>'] = { 'show', 'show_documentation', 'hide_documentation' },
-      -- ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-      -- ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-      -- -- Navigation; uses standard keymap familiar from other plugins
-      -- ['<Up>'] = { 'select_prev', 'fallback' },
-      -- ['<Down>'] = { 'select_next', 'fallback' },
-      -- ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
-      -- ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
       -- Completion; uses the snippet under the cursor, or the first one otherwise.
       ['<Tab>'] = {
         function(cmp)
