@@ -1,4 +1,6 @@
 -- [[ Configuration ]]
+-- Must be required first and in this specific order to avoid
+-- issues when plugins start being loaded later on in this file.
 require 'globals'
 require 'options'
 require 'keymaps'
@@ -19,34 +21,27 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Plugins ]]
 --  See `:Lazy`
 require('lazy').setup({
-  -- Configurations that depend on plugins
-  require 'colorschemes',
-  -- Standalone plugins
   require 'plugins.autopairs',
-  require 'plugins.cheatsheet',
-  require 'plugins.codecompanion',
+  require 'plugins.colorschemes',
   require 'plugins.comments',
   require 'plugins.completions',
   require 'plugins.conform',
-  require 'plugins.copilot',
   require 'plugins.gitsigns',
-  require 'plugins.indents',
+  require 'plugins.guess-indent',
+  require 'plugins.indent-guide',
   require 'plugins.lsp',
   require 'plugins.mini',
-  require 'plugins.neotree',
   require 'plugins.render-markdown',
-  require 'plugins.sleuth',
-  require 'plugins.tailwind',
   require 'plugins.telescope',
   require 'plugins.tmux-navigator',
   require 'plugins.treesitter',
   require 'plugins.trouble',
-  require 'plugins.which-key',
   require 'plugins.yanky',
   require 'plugins.zk',
 }, {
   ui = {
-    -- Use icons for UI if a Nerd Font is enabled in Vim, falling back to an empty field otherwise.
+    -- Use emojis for UI if Nerd Fonts are disabled. Providing an empty
+    -- table will allow lazy.nvim to use it's built-in icons instead.
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',
@@ -64,3 +59,8 @@ require('lazy').setup({
     },
   },
 })
+
+-- Must be done here to allow `plugins.colorschemes` to download multiple schemes
+-- at the same time, while also keeping a single, centralized location at which
+-- a colorscheme actually gets set within Neovim.
+vim.cmd.colorscheme 'alabaster'

@@ -1,4 +1,4 @@
--- Integrates improved UI for quickfixes, diagnostics and TODOs
+-- Integrates improved UI for quickfixes and other diagnostics
 return {
   'folke/trouble.nvim',
   opts = {},
@@ -12,12 +12,12 @@ return {
     {
       '<leader>xD',
       '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-      desc = 'Trouble: Diagnostics buffer',
+      desc = 'Trouble: Buffer diagnostics',
     },
     {
       '<leader>cs',
       '<cmd>Trouble symbols toggle focus=false<cr>',
-      desc = 'Trouble: Code Symbols',
+      desc = 'Trouble: Code symbols',
     },
     {
       '<leader>cl',
