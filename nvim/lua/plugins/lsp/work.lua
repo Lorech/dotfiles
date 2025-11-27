@@ -11,4 +11,6 @@ return vim.tbl_deep_extend('force', base, {
   ts_ls = {},
   eslint = {},
   somesass_ls = {},
+  -- Standalone
+  mdx_analyzer = {},
 })
