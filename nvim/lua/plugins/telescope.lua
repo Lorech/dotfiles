@@ -24,6 +24,10 @@ return {
     local telescope = require 'telescope'
 
     telescope.setup {
+      defaults = {
+        -- Include hidden files when greping
+        vimgrep_arguments = { 'rg', '--hidden', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
+      },
       pickers = {
         find_files = {
           -- Include all hidden files, except for the `.git` directory
@@ -33,6 +37,9 @@ return {
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
+        },
+        file_browser = {
+          hidden = true,
         },
       },
     }
