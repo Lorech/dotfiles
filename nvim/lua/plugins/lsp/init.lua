@@ -162,7 +162,7 @@ return {
       local servers
       if hostname == 'Lauriss-MacBook-Pro.local' then
         servers = require 'plugins.lsp.laptop'
-      elseif hostname == 'Lauriss-MacBook-Pro-2.local' then
+      elseif hostname == 'Lauris-M5.local' then
         servers = require 'plugins.lsp.work'
       elseif hostname == 'Fractal' then
         servers = require 'plugins.lsp.desktop'

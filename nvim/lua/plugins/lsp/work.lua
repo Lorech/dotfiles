@@ -1,6 +1,6 @@
 local base = require 'plugins.lsp.shared'
 
--- Work-issued 13" M2 MacBook Pro.
+-- Work-issued 14" M5 MacBook Pro.
 return vim.tbl_deep_extend('force', base, {
   -- DevOps
   dockerls = {},
@@ -12,5 +12,6 @@ return vim.tbl_deep_extend('force', base, {
   eslint = {},
   somesass_ls = {},
   -- Standalone
+  gopls = {},
   mdx_analyzer = {},
 })

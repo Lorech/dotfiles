@@ -1,6 +1,6 @@
 local base = require 'plugins.conform.shared'
 
--- Work-issued 13" M2 MacBook Pro.
+-- Work-issued 15" M5 MacBook Pro.
 return vim.tbl_extend('force', base, {
   -- DevOps
   sql = { 'sqlfmt' },
@@ -10,4 +10,6 @@ return vim.tbl_extend('force', base, {
   javascript = { 'prettier' },
   typescript = { 'prettier' },
   typescriptreact = { 'prettier' },
+  -- Standalone
+  go = { 'gofmt' },
 })
