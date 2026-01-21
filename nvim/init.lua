@@ -23,6 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   require 'plugins.autopairs',
   require 'plugins.colorschemes',
+  require 'plugins.codecompanion',
   require 'plugins.comments',
   require 'plugins.completions',
   require 'plugins.conform',

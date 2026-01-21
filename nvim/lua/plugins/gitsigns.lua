@@ -48,21 +48,21 @@ return {
       end, 'jump to previous hunk')
 
       -- [[ Actions ]]
-      map('v', '<leader>gs', function()
+      map('v', '<leader>hs', function()
         gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
       end, 'Stage hunk')
-      map('v', '<leader>gr', function()
+      map('v', '<leader>hr', function()
         gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
       end, 'Reset hunk')
-      map('n', '<leader>gs', gitsigns.stage_hunk, 'Stage hunk')
-      map('n', '<leader>gr', gitsigns.reset_hunk, 'Reset hunk')
-      map('n', '<leader>gS', gitsigns.stage_buffer, 'Stage buffer')
-      map('n', '<leader>gR', gitsigns.reset_buffer, 'Reset buffer')
-      map('n', '<leader>gp', gitsigns.preview_hunk, 'Preview hunk')
-      map('n', '<leader>gi', gitsigns.preview_hunk_inline, 'Inline preview hunk')
-      map('n', '<leader>gb', gitsigns.blame_line, 'Blame line')
-      map('n', '<leader>gd', gitsigns.diffthis, 'Diff index')
-      map('n', '<leader>gD', function()
+      map('n', '<leader>hs', gitsigns.stage_hunk, 'Stage hunk')
+      map('n', '<leader>hr', gitsigns.reset_hunk, 'Reset hunk')
+      map('n', '<leader>hS', gitsigns.stage_buffer, 'Stage buffer')
+      map('n', '<leader>hR', gitsigns.reset_buffer, 'Reset buffer')
+      map('n', '<leader>hp', gitsigns.preview_hunk, 'Preview hunk')
+      map('n', '<leader>hi', gitsigns.preview_hunk_inline, 'Inline preview hunk')
+      map('n', '<leader>hb', gitsigns.blame_line, 'Blame line')
+      map('n', '<leader>hd', gitsigns.diffthis, 'Diff index')
+      map('n', '<leader>hD', function()
         gitsigns.diffthis '@'
       end, 'Diff commit')
       map('n', '<leader>tb', gitsigns.toggle_current_line_blame, 'Toggle line blame')
