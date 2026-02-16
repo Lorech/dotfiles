@@ -1,11 +1,7 @@
 ### MARK: ZSH Configuration
 
-export ZSH="$HOME/.oh-my-zsh"
-
 DOTFILES="$HOME/.config"
 ZSH_CUSTOM="$DOTFILES/zsh"
-
-zstyle ':omz:update' mode auto # Update automatically
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -23,10 +19,6 @@ plugins=(
 
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
-
-### MARK: Source
-
-source $ZSH/oh-my-zsh.sh
 
 ### MARK: User Configuration
 
