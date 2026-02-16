@@ -31,6 +31,7 @@ zed/*
 !/zed/config.json
 !zk
 !zsh
+zsh/environments/tokens.sh
 
 # Misc. files
 *.DS_Store

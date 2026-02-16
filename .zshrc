@@ -37,20 +37,26 @@ else
   export EDITOR='nvim'
 fi
 
-# Start Hyprland together with the login shell on my Arch desktop.
-if [[ "$HOST" == "Fractal" ]] then
-  if uwsm check may-start; then
-    exec uwsm start hyprland.desktop
-  fi
-fi
-
-# Move configuration directories from defaults to this repository.
-export XDG_CONFIG_HOME="$DOTFILES"
-export EZA_CONFIG_DIR="$DOTFILES/eza"
-
 # Use the Starship theme for ZSH
 export STARSHIP_CONFIG="$DOTFILES/starship/starship.toml"
 eval "$(starship init zsh)"
+
+### MARK: Device configuration
+
+# Sensitive tokens from a gitignored file, which may not exist.
+if [ -f "$ZSH_CUSTOM/environments/tokens.sh" ]; then
+  source "$ZSH_CUSTOM/environments/tokens.sh"
+fi;
+
+# Computer-specific tooling
+case "$HOST" in
+  MacBookPro)
+    source "$ZSH_CUSTOM/environments/home.sh"
+    ;;
+  Lauris-M5.local)
+    source "$ZSH_CUSTOM/environments/work.sh"
+    ;;
+esac
 
 ### MARK: Custom Aliases
 
@@ -72,28 +78,3 @@ git_commit_timestamp() {
     echo "Not inside a git repository."
   fi
 }
-
-### MARK: Custom Paths
-
-# NVM for Node management
-if [ -d "$HOME/.nvm" ]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-fi
-
-# PNPM
-pnpm_installed=false
-if [ -d "$HOME/Library/pnpm" ]; then
-  export PNPM_HOME="$HOME/Library/pnpm"
-  pnpm_installed=true
-elif [ -d "$HOME/.local/share/pnpm" ]; then
-  export PNPM_HOME="$HOME/.local/share/pnpm"
-  pnpm_installed=true
-fi;
-if [ "$pnpm_installed" = true ]; then
-  case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-  esac
-fi
