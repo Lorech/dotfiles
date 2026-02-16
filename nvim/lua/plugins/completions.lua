@@ -26,19 +26,8 @@ return {
   --- @type blink.cmp.Config
   opts = {
     keymap = {
-      preset = 'default',
-      -- Completion; uses the snippet under the cursor, or the first one otherwise.
-      ['<Tab>'] = {
-        function(cmp)
-          if cmp.snippet_active() then
-            return cmp.accept()
-          else
-            return cmp.select_and_accept()
-          end
-        end,
-        'snippet_forward',
-        'fallback',
-      },
+      preset = 'super-tab',
+      ['<C-K>'] = { 'show', 'show_documentation', 'hide_documentation' },
     },
     completion = {
       list = {
