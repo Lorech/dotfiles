@@ -7,6 +7,8 @@ DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
+export XDG_CONFIG_HOME="$DOTFILES"
+
 ### MARK: Plugin Configuration
 
 source "$ZSH_CUSTOM/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
