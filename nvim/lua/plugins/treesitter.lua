@@ -4,7 +4,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs',
+    main = 'nvim-treesitter.config',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
