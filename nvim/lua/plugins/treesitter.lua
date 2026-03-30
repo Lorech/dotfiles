@@ -3,8 +3,10 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    event = 'BufRead',
+    branch = 'main',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.config',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
@@ -20,6 +22,17 @@ return {
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+    },
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    event = 'BufRead',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      event = 'BufRead',
+    },
+    opts = {
+      multiwindow = true,
     },
   },
 }
