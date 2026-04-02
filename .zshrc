@@ -9,6 +9,14 @@ COMPLETION_WAITING_DOTS="true"
 
 export XDG_CONFIG_HOME="$DOTFILES"
 
+# Enable search-by-prefix. Is this needed? Always worked without extra configuration...
+autoload up-line-or-beginning-search
+autoload down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "\e[A" up-line-or-beginning-search
+bindkey "\e[B" down-line-or-beginning-search
+
 ### MARK: Plugin Configuration
 
 source "$ZSH_CUSTOM/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
