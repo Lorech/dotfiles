@@ -195,17 +195,16 @@ return {
       vim.list_extend(ensure_installed, vim.iter(vim.tbl_values(formatters or {})):flatten():totable())
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      -- Apply shared capabilities to all servers, then layer per-server config on top
+      vim.lsp.config('*', { capabilities = capabilities })
+      for server_name, server_config in pairs(servers) do
+        vim.lsp.config(server_name, server_config)
+      end
+
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- Empty table as these are set via mason-tool-installer
         automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- Override only values explicitly passed by the above configuration
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
+        automatic_enable = true,
       }
     end,
   },
