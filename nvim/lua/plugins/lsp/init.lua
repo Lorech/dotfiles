@@ -141,7 +141,7 @@ return {
       }
 
       -- Extend the default Neovim LSP capabilities with ones from other packages
-      local capabilities = require('blink-cmp').get_lsp_capabilities()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       -- Resolve the hostname to facilitate per-device configuration
       local hostname = vim.uv.os_gethostname()
