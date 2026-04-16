@@ -144,7 +144,7 @@ return {
       local capabilities = require('blink-cmp').get_lsp_capabilities()
 
       -- Resolve the hostname to facilitate per-device configuration
-      local hostname = vim.loop.os_gethostname()
+      local hostname = vim.uv.os_gethostname()
 
       -- Enabled language servers, which are set on a per-device basis
       --
@@ -162,10 +162,10 @@ return {
       local servers
       if hostname == 'Lauriss-MacBook-Pro.local' then
         servers = require 'plugins.lsp.laptop'
-      elseif hostname == 'Lauris-M5.local' then
-        servers = require 'plugins.lsp.work'
       elseif hostname == 'Fractal' then
         servers = require 'plugins.lsp.desktop'
+      elseif hostname == 'Lauris-M5.local' then
+        servers = require 'plugins.lsp.work'
       else
         servers = require 'plugins.lsp.shared'
       end
@@ -180,12 +180,12 @@ return {
       -- from its hostname below. Each new configuration should extend from the
       -- `shared` configuration, ensuring some consistency between devices.
       local formatters
-      if hostname == 'Lauriss-MacBook-Pro-2.local' then
-        formatters = require 'plugins.conform.work'
-      elseif hostname == 'Lauriss-MacBook-Pro.local' then
+      if hostname == 'Lauriss-MacBook-Pro.local' then
         formatters = require 'plugins.conform.laptop'
       elseif hostname == 'Fractal' then
         formatters = require 'plugins.conform.desktop'
+      elseif hostname == 'Lauris-M5.local' then
+        formatters = require 'plugins.conform.work'
       else
         formatters = require 'plugins.conform.shared'
       end
