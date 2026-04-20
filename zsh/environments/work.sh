@@ -1,7 +1,13 @@
+export PATH="$HOME/.local/bin:$PATH"
+
 export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
 export PATH=~/Library/Android/sdk/tools:$PATH
 export PATH=~/Library/Android/sdk/platform-tools:$PATH
+
+export ANDROID_HOME=~/Library/Android/sdk
 
 PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
