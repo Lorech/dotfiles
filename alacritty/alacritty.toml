@@ -15,5 +15,6 @@ dynamic_title = false
 option_as_alt = "OnlyLeft"
 
 [font]
-normal.family = "JetBrainsMono Nerd Font"
+normal.family = "CaskaydiaMono Nerd Font Mono"
+normal.style = "SemiLight"
 size = 16
