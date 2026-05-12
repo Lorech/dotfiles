@@ -1,0 +1,32 @@
+# Alabaster Dusk — deep purple/mauve variant
+[colors.primary]
+background = "#120f18"
+foreground = "#c8c0d2"
+
+[colors.cursor]
+cursor = "#b078b8"
+text = "#120f18"
+
+[colors.selection]
+background = "#201828"
+text = "#000000"
+
+[colors.normal]
+black = "#000000"
+blue = "#6080b8"
+cyan = "#3d9098"
+green = "#6aaa60"
+magenta = "#b078b8"
+red = "#c04858"
+white = "#c8c0d2"
+yellow = "#a87840"
+
+[colors.bright]
+black = "#382840"
+blue = "#7090c8"
+cyan = "#50a0a8"
+green = "#7aba70"
+magenta = "#c088c8"
+red = "#d05868"
+white = "#ffffff"
+yellow = "#b88850"

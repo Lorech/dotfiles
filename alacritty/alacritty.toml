@@ -1,6 +1,6 @@
 [general]
 import = [
-	"~/.config/alacritty/themes/alabaster-dark.toml"
+	"~/.config/alacritty/themes/alabaster-dusk.toml"
 	# "~/.config/alacritty/themes/rose-pine-moon.toml"
 ]
 
