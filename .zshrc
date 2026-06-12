@@ -34,9 +34,17 @@ else
   export EDITOR='nvim'
 fi
 
+# Revert VIM-mode shell behavior.
+# https://github.com/babun/babun/issues/527#issuecomment-3741953453
+bindkey -e
+
 # Use the Starship theme for ZSH
 export STARSHIP_CONFIG="$DOTFILES/starship/starship.toml"
 eval "$(starship init zsh)"
+
+# Fuzzy-find commands in an overlay.
+export FZF_TMUX_OPTS="-p 90%,70%"
+eval "$(fzf --zsh)"
 
 ### MARK: Device configuration
 
@@ -75,3 +83,6 @@ git_commit_timestamp() {
     echo "Not inside a git repository."
   fi
 }
+
+# opencode
+export PATH=/Users/laurisdedumets/.opencode/bin:$PATH
