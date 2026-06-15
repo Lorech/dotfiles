@@ -34,17 +34,16 @@ else
   export EDITOR='nvim'
 fi
 
-# Revert VIM-mode shell behavior.
-# https://github.com/babun/babun/issues/527#issuecomment-3741953453
-bindkey -e
-
-# Use the Starship theme for ZSH
+# Use the Starship theme for zsh
 export STARSHIP_CONFIG="$DOTFILES/starship/starship.toml"
 eval "$(starship init zsh)"
 
-# Fuzzy-find commands in an overlay.
+# Pre-configure fzf for zsh
 export FZF_TMUX_OPTS="-p 90%,70%"
 eval "$(fzf --zsh)"
+
+# Pre-configure zoxide for zsh
+eval "$(zoxide init zsh --cmd cd)"
 
 ### MARK: Device configuration
 
@@ -65,13 +64,27 @@ esac
 
 ### MARK: Custom Aliases
 
-alias "pip"="python3 -m pip"
-alias "gct"="git_commit_timestamp"
+alias pip='python3 -m pip'
+alias todos='rg -i "TODO|FIXME|HACK|XXX" --color=always'
+
+# Simplify common actions via fuzzy-finding
+alias fkill='kill $(ps aux | fzf | awk '"'"'{print $2}'"'"')'
+alias fe='$EDITOR $(fzf --preview "bat --color=always {}")'
+alias fbr='git checkout $(git branch | fzf)'
+
+# Replace native commands with third-party modified executables
+alias ls='eza --icons'
+alias ll='eza -l --git --icons'
+alias la='eza -la --git --icons'
+alias lt='eza --tree --level=2 --icons'
+alias cat='bat'
+alias diff='delta'
 
 ### MARK: Custom Functions
 
 # Autocommits all staged files with a timestamp as the commit message.
 # Passing `push` as an argument to the function also pushes it upstream.
+alias gct='git_commit_timestamp'
 git_commit_timestamp() {
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git add -A
@@ -83,6 +96,3 @@ git_commit_timestamp() {
     echo "Not inside a git repository."
   fi
 }
-
-# opencode
-export PATH=/Users/laurisdedumets/.opencode/bin:$PATH
