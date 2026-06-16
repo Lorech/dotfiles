@@ -8,6 +8,10 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 export XDG_CONFIG_HOME="$DOTFILES"
+export FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
+
+autoload -Uz compinit && compinit
+setopt COMPLETE_ALIASES
 
 # Enable search-by-prefix. Is this needed? Always worked without extra configuration...
 autoload up-line-or-beginning-search
@@ -77,6 +81,7 @@ alias ls='eza --icons'
 alias ll='eza -l --git --icons'
 alias la='eza -la --git --icons'
 alias lt='eza --tree --level=2 --icons'
+compdef _eza ls ll la lt
 alias cat='bat'
 alias diff='delta'
 
