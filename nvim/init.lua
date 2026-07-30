@@ -35,7 +35,7 @@ require('lazy').setup({
   require 'plugins.render-markdown',
   require 'plugins.telescope',
   require 'plugins.tmux-navigator',
-  require 'plugins.treesitter',
+  -- require 'plugins.treesitter',
   require 'plugins.trouble',
   require 'plugins.yanky',
   require 'plugins.zk',

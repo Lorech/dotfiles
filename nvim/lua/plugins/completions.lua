@@ -1,55 +1,33 @@
 -- Autocompletion support while editing
 return {
-  'saghen/blink.cmp',
-  event = 'VimEnter',
-  version = '1.*',
-  dependencies = {
-    -- Snippet engine
-    {
-      'L3MON4D3/LuaSnip',
-      version = 'v2.*',
-      build = 'make install_jsregexp',
-      dependencies = {
-        -- Include a bunch of pre-made code snippets to autocomplete.
-        {
-          'rafamadriz/friendly-snippets',
-          config = function()
-            require('luasnip.loaders.from_vscode').lazy_load()
-          end,
-        },
+  'hrsh7th/nvim-cmp',
+  dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip' },
+  config = function()
+    local cmp = require 'cmp'
+    local luasnip = require 'luasnip'
+    cmp.setup {
+      snippet = {
+        expand = function(a)
+          require('luasnip').lsp_expand(a.body)
+        end,
       },
-      opts = {},
-    },
-    'folke/lazydev.nvim',
-  },
-  --- @module 'blink.cmp'
-  --- @type blink.cmp.Config
-  opts = {
-    keymap = {
-      preset = 'super-tab',
-      ['<C-K>'] = { 'show', 'show_documentation', 'hide_documentation' },
-    },
-    completion = {
-      list = {
-        selection = {
-          preselect = false,
-          auto_insert = false,
-        },
+      sources = { { name = 'nvim_lsp' }, { name = 'luasnip' } },
+      mapping = cmp.mapping.preset.insert {
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm { select = false },
+        ['<Tab>'] = cmp.mapping(function(fallback)
+          if luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif cmp.visible() then
+            cmp.confirm { select = true }
+          else
+            fallback()
+          end
+        end, { 'i', 's' }),
       },
-      ghost_text = {
-        enabled = false,
-      },
-      menu = { border = 'single' },
-      documentation = { window = { border = 'single' } },
-    },
-    sources = {
-      default = { 'lsp', 'path', 'snippets', 'lazydev' },
-      providers = {
-        lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-      },
-    },
-    snippets = { preset = 'luasnip' },
-    fuzzy = { implementation = 'prefer_rust_with_warning' },
-    signature = { enabled = true },
-  },
+    }
+  end,
 }

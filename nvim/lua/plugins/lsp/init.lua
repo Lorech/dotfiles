@@ -21,8 +21,6 @@ return {
       { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
-      -- Allows extra capabilities provided by blink.cmp
-      { 'saghen/blink.cmp' },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -140,9 +138,6 @@ return {
         },
       }
 
-      -- Extend the default Neovim LSP capabilities with ones from other packages
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-
       -- Resolve the hostname to facilitate per-device configuration
       local hostname = vim.uv.os_gethostname()
 
@@ -170,42 +165,18 @@ return {
         servers = require 'plugins.lsp.shared'
       end
 
-      -- Enabled formatters, which are set on a per-device basis
-      --
-      -- The actual formatting hooks are set within the configuration for
-      -- `conform`, but these are extracted here to enable automatic installs
-      -- via Mason for the configured formatters.
-      --
-      -- To add a new device to the list, create a new configuration derived
-      -- from its hostname below. Each new configuration should extend from the
-      -- `shared` configuration, ensuring some consistency between devices.
-      local formatters
-      if hostname == 'Lauriss-MacBook-Pro.local' then
-        formatters = require 'plugins.conform.laptop'
-      elseif hostname == 'Fractal' then
-        formatters = require 'plugins.conform.desktop'
-      elseif hostname == 'Lauris-M5.local' then
-        formatters = require 'plugins.conform.work'
-      else
-        formatters = require 'plugins.conform.shared'
-      end
+      -- Ensure the servers are always installed
+      require('mason-lspconfig').setup { ensure_installed = servers }
 
-      -- Ensure the servers and formatters above are always installed
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, vim.iter(vim.tbl_values(formatters or {})):flatten():totable())
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-      -- Apply shared capabilities to all servers, then layer per-server config on top
-      vim.lsp.config('*', { capabilities = capabilities })
+      -- Configure each server with their specific configuration
       for server_name, server_config in pairs(servers) do
         vim.lsp.config(server_name, server_config)
       end
 
-      require('mason-lspconfig').setup {
-        ensure_installed = {}, -- Empty table as these are set via mason-tool-installer
-        automatic_installation = false,
-        automatic_enable = true,
-      }
+      -- Enable all installed LSP servers
+      for _, lsp in pairs(servers) do
+        vim.lsp.enable(lsp)
+      end
     end,
   },
 }
