@@ -24,14 +24,9 @@ return {
     local telescope = require 'telescope'
 
     telescope.setup {
-      defaults = {
-        -- Include hidden files when greping
-        vimgrep_arguments = { 'rg', '--hidden', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
-      },
       pickers = {
         find_files = {
-          -- Include all hidden files, except for the `.git` directory
-          find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
+          find_command = { 'rg', '--ignore', '--follow', '--files' },
         },
       },
       extensions = {
@@ -69,19 +64,6 @@ return {
     map('n', '<leader><leader>', function()
       builtin.buffers { ignore_current_buffer = true, sort_lastused = true }
     end, 'find buffers')
-    map('n', '<leader>/', function()
-      -- Decrease UI size since the current buffer is already familiar.
-      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
-        previewer = false,
-      })
-    end, 'Search current buffer')
-    map('n', '<leader>f/', function()
-      builtin.live_grep {
-        grep_open_files = true,
-        prompt_title = 'Live Grep in Open Files',
-      }
-    end, 'Grep open buffers')
     map('n', '<leader>fn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, 'Find Neovim files')
