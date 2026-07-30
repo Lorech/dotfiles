@@ -4,12 +4,6 @@
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
-[submodule "tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
-	url = git@github.com:tmux-plugins/tpm.git
-[submodule "tmux/plugins/tmux"]
-	path = tmux/plugins/tmux
-	url = git@github.com:tmux/tmux.git
 [submodule "tmux/plugins/tmux-resurrect"]
 	path = tmux/plugins/tmux-resurrect
 	url = git@github.com:tmux-plugins/tmux-resurrect.git
